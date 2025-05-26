@@ -1,0 +1,18 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+  align-items: center;
+}
+
+.home-title {
+  font-size: 3.5rem;
+  font-weight: 600;
+  color: #880822;
+  text-align: center;
+}
+
+.home-buttons {
+  display: flex;
+  gap: 2rem;
+}
