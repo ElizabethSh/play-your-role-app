@@ -1,0 +1,44 @@
+.layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: min-content 1fr min-content;
+  height: 100vh;
+  justify-content: center;
+}
+
+.content {
+  display: grid;
+  height: 100%;
+  margin: 0 auto;
+  place-items: center;
+  width: 1200px;
+}
+
+.layout-header {
+  background-color: #1f2629;
+  color: #f2f1ed;
+}
+
+.layout-header .content {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+  justify-content: start;
+}
+
+.layout-main {
+  background-color: #f2f1ed;
+  background-image: url("../../../public/bg-desktop.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.layout-footer {
+  align-items: center;
+  background-color: #1f2629;
+  color: #f2f1ed;
+  display: flex;
+  height: 4rem;
+  justify-content: center;
+}
