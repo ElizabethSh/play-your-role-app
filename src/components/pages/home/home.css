@@ -1,32 +1,11 @@
 .home {
   display: flex;
   flex-direction: column;
-  row-gap: 1.5rem;
+  row-gap: 3.5rem;
   align-items: center;
-}
-
-.home-title {
-  font-size: 4rem;
-  font-weight: 600;
-  color: var(--home-page-header-color);
-  text-align: center;
 }
 
 .home-buttons {
   display: flex;
-  gap: 2rem;
-}
-
-.home-buttons .button {
-  border: 1px solid var(--text-color-primary);
-  color: var(--text-color-primary);
-  border-radius: 0.25rem;
-  padding: 1rem;
-  font-size: 1.5rem;
-}
-
-.home-buttons .button:hover,
-.home-buttons .button:focus {
-  background-color: var(--text-color-primary);
-  color: var(--background-color-primary);
+  gap: 2.5rem;
 }
