@@ -1,0 +1,19 @@
+.characters {
+  background-color: var(--background-color-secondary);
+  height: 100%;
+  padding: 5rem 1rem 2rem;
+  width: 100%;
+}
+
+.characters-empty-list {
+  align-items: center;
+  display: flex;
+  font-size: 2rem;
+  justify-content: center;
+  margin-top: 20rem;
+}
+
+.characters .button-secondary {
+  display: flex;
+  justify-self: center;
+}
