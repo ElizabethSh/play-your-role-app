@@ -1,0 +1,14 @@
+.not-found {
+  background-color: var(--background-color-info);
+  border-radius: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 3rem;
+  place-items: center;
+}
+
+.not-found-description {
+  color: var(--text-color-primary);
+  font-size: 1.5rem;
+}
