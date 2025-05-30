@@ -1,13 +1,30 @@
-import React from "react";
+import React, { useEffect, useMemo } from "react";
+import { Navigate, useNavigate, useParams } from "react-router";
 
 import { avatar } from "../../../../icons";
-import { characters } from "../../../../mocks";
-import { CORE_ABILITIES } from "../../../../settings";
+import { characters } from "../../../../mocks"; // TODO: replace with real data
+import { AppRoute, CORE_ABILITIES } from "../../../../settings";
 
 import "./item.css";
 
 const CharacterDetailsPage: React.FC = () => {
-  const character = characters[0];
+  const { id } = useParams();
+  const navigate = useNavigate();
+
+  if (!characters.length) {
+    return <Navigate to={AppRoute.Characters} />;
+  }
+  const character = useMemo(() => {
+    return characters.find((character) => character.id === id);
+  }, [id]);
+
+  // FIXME: flickering issue when navigating to a character that does not exist
+  // probably loader will fix it
+  useEffect(() => {
+    if (!character) {
+      navigate(AppRoute.NotFound);
+    }
+  }, []);
 
   return (
     <section className="main-content character">
@@ -21,10 +38,10 @@ const CharacterDetailsPage: React.FC = () => {
           <li className="ability" key={ability}>
             <h6 className="ability-name">{ability}</h6>
             <p className="ability-value">
-              {character.coreAbilities[ability].score}
+              {character?.coreAbilities[ability].score}
             </p>
             <p className="ability-modifier">
-              {character.coreAbilities[ability].modifier}
+              {character?.coreAbilities[ability].modifier}
             </p>
           </li>
         ))}
