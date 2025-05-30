@@ -8,7 +8,7 @@ import CharactersList from "../../../list";
 import "./characters.css";
 
 const CharactersPage: React.FC = () => (
-  <section className="characters">
+  <section className="characters main-content">
     <h1 className="main-title">Your characters</h1>
     {characters.length ? (
       <CharactersList characters={characters} />
