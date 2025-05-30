@@ -67,3 +67,10 @@ code {
   margin: 0;
   text-align: center;
 }
+
+.main-content {
+  background-color: var(--background-color-secondary);
+  height: 100%;
+  padding: 5rem 4rem 2rem;
+  width: 100%;
+}
