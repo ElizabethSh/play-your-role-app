@@ -8,6 +8,9 @@ import Loader from "../loader";
 const NotFoundPage = React.lazy(() => import("../pages/not-found"));
 const HomePage = React.lazy(() => import("../pages/home"));
 const CharacterPage = React.lazy(() => import("../pages/characters/list"));
+const CharacterDetailsPage = React.lazy(
+  () => import("../pages/characters/item")
+);
 
 const App = () => {
   return (
@@ -16,7 +19,7 @@ const App = () => {
         <Route element={<Layout />}>
           <Route path={AppRoute.Root} element={<HomePage />} />
           <Route path={AppRoute.Characters} element={<CharacterPage />} />
-          <Route path={AppRoute.Character} />
+          <Route path={AppRoute.Character} element={<CharacterDetailsPage />} />
           <Route path={AppRoute.NewCharacter} />
           <Route path={AppRoute.NotFound} element={<NotFoundPage />} />
         </Route>

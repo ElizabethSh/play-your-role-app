@@ -1,0 +1,126 @@
+.character {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.character .avatar path {
+  stroke: var(--background-color-info);
+}
+
+.character-header {
+  align-items: center;
+  display: grid;
+  gap: 3rem 5rem;
+  grid-template-areas:
+    "link link"
+    "avatar title";
+  grid-template-columns: min-content 1fr;
+}
+
+.character-back-link {
+  align-items: center;
+  color: var(--background-color-info);
+  display: flex;
+  gap: 1rem;
+  grid-area: link;
+  text-decoration: none;
+}
+
+.character-back-link:hover,
+.character-back-link:focus {
+  color: var(--color-link);
+}
+
+.character .avatar {
+  border-radius: 50%;
+  border: 3px solid var(--background-color-info);
+  grid-area: avatar;
+  height: 10rem;
+  padding: 1rem;
+  width: 10rem;
+}
+
+.character-name {
+  text-align: left;
+}
+
+.character-title {
+  color: var(--background-color-info);
+  font-size: 2.5rem;
+  font-weight: 600;
+  grid-area: title;
+  margin: 0;
+  text-align: center;
+}
+
+.character-abilities {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.character-notes {
+  color: var(--background-color-info);
+  font-size: 1rem;
+  height: 18rem;
+  margin: 0;
+  overflow-y: auto;
+}
+
+.character-notes::-webkit-scrollbar {
+  background-color: transparent;
+  border-radius: 0.625rem;
+  transition: all 0.3s;
+  width: 0.5rem;
+}
+
+.character-notes::-webkit-scrollbar-thumb {
+  background-color: var(--color-scrollbar-thumb);
+  border-radius: 0.625rem;
+  padding-right: 0.5rem;
+}
+
+.ability {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.ability-name {
+  color: var(--background-color-info);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 0 1.5rem;
+  text-transform: capitalize;
+}
+
+.ability-value,
+.ability-modifier {
+  border-radius: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+}
+
+.ability-value {
+  border: 2px solid var(--background-color-info);
+  color: var(--background-color-info);
+  font-size: 2rem;
+  font-weight: 600;
+  height: 7rem;
+  place-content: center;
+  width: 7rem;
+}
+
+.ability-modifier {
+  background-color: var(--background-color-info);
+  color: var(--text-color-primary);
+  font-size: 1.5rem;
+  height: 3rem;
+  margin: -1rem;
+  place-content: center;
+  width: 3rem;
+}

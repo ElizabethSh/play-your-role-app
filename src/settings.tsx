@@ -5,3 +5,12 @@ export enum AppRoute {
   NewCharacter = "/characters/new",
   NotFound = "*",
 }
+
+export const CORE_ABILITIES = [
+  "strength",
+  "dexterity",
+  "constitution",
+  "intelligence",
+  "wisdom",
+  "charisma",
+] as const;

@@ -1,12 +1,11 @@
 type Ability = {
-  name: string;
   readonly score: number;
   readonly modifier: number;
 };
 
 export type Character = {
   avatar?: string;
-  coreAbilities: Ability[];
+  coreAbilities: Record<string, Ability>;
   id: string;
   name: string;
   notes?: string;
