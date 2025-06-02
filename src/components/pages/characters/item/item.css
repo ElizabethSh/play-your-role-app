@@ -1,13 +1,7 @@
 .character {
-  display: grid;
-}
-
-.character .avatar {
-  border-radius: 50%;
-  border: 3px solid var(--background-color-info);
-  height: 10rem;
-  padding: 1rem;
-  width: 10rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
 }
 
 .character .avatar path {
@@ -16,14 +10,46 @@
 
 .character-header {
   align-items: center;
+  display: grid;
+  gap: 3rem 5rem;
+  grid-template-areas:
+    "link link"
+    "avatar title";
+  grid-template-columns: min-content 1fr;
+}
+
+.character-back-link {
+  align-items: center;
+  color: var(--background-color-info);
   display: flex;
-  gap: 5rem;
+  gap: 1rem;
+  grid-area: link;
+  text-decoration: none;
+}
+
+.character-back-link:hover,
+.character-back-link:focus {
+  color: var(--color-link);
+}
+
+.character .avatar {
+  border-radius: 50%;
+  border: 3px solid var(--background-color-info);
+  grid-area: avatar;
+  height: 10rem;
+  padding: 1rem;
+  width: 10rem;
+}
+
+.character-name {
+  text-align: left;
 }
 
 .character-title {
   color: var(--background-color-info);
   font-size: 2.5rem;
   font-weight: 600;
+  grid-area: title;
   margin: 0;
   text-align: center;
 }

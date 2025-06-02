@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo } from "react";
-import { Navigate, useNavigate, useParams } from "react-router";
+import { Link, Navigate, useNavigate, useParams } from "react-router";
 
-import { avatar } from "../../../../icons";
+import { arrow_left, avatar } from "../../../../icons";
 import { characters } from "../../../../mocks"; // TODO: replace with real data
 import { AppRoute, CORE_ABILITIES } from "../../../../settings";
 
@@ -29,8 +29,12 @@ const CharacterDetailsPage: React.FC = () => {
   return (
     <section className="main-content character">
       <div className="character-header">
+        <Link className="character-back-link" to={AppRoute.Characters}>
+          {arrow_left}
+          Back to characters
+        </Link>
         {avatar}
-        <h1 className="main-title">{character?.name}</h1>
+        <h1 className="main-title character-name">{character?.name}</h1>
       </div>
       <h3 className="character-title">Core abilities</h3>
       <ul className="character-abilities">
