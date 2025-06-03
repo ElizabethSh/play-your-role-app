@@ -1,9 +1,9 @@
 import React, { useEffect, useMemo } from "react";
 import { Link, Navigate, useNavigate, useParams } from "react-router";
 
-import { arrow_left, avatar } from "../../../../icons";
-import { characters } from "../../../../mocks"; // TODO: replace with real data
-import { AppRoute, CORE_ABILITIES } from "../../../../settings";
+import { arrow_left, avatar } from "../../../icons";
+import { characters } from "../../../mocks"; // TODO: replace with real data
+import { AppRoute, CORE_ABILITIES } from "../../../settings";
 
 import "./item.css";
 

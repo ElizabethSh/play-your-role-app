@@ -5,11 +5,11 @@ import { AppRoute } from "../../settings";
 import Layout from "../layout";
 import Loader from "../loader";
 
-const NotFoundPage = React.lazy(() => import("../pages/not-found"));
-const HomePage = React.lazy(() => import("../pages/home"));
-const CharacterPage = React.lazy(() => import("../pages/characters/list"));
+const NotFoundPage = React.lazy(() => import("../../pages/not-found"));
+const HomePage = React.lazy(() => import("../../pages/home"));
+const CharacterPage = React.lazy(() => import("../../pages/characters/list"));
 const CharacterDetailsPage = React.lazy(
-  () => import("../pages/characters/item")
+  () => import("../../pages/characters/item")
 );
 
 const App = () => {

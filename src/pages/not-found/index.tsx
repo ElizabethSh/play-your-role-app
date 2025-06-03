@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router";
 
-import { AppRoute } from "../../../settings";
+import { AppRoute } from "../../settings";
 
 import "./not-found.css";
 

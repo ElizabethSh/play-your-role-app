@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router";
 
-import { AppRoute } from "../../../settings";
+import { AppRoute } from "../../settings";
 
-import "../../../index.css";
+import "../../index.css";
 import "./home.css";
 
 const HomePage: React.FC = () => (
