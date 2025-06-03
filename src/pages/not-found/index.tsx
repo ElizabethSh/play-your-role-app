@@ -3,7 +3,7 @@ import { Link } from "react-router";
 
 import { AppRoute } from "../../settings";
 
-import "./not-found.css";
+import "./not-found.scss";
 
 const NotFoundPage: React.FC = () => {
   return (

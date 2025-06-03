@@ -2,7 +2,7 @@ import React from "react";
 
 import { CORE_ABILITIES } from "../../../settings";
 
-import "./form.css";
+import "./form.scss";
 import "../../../index.scss";
 
 const CharacterForm: React.FC = () => {
