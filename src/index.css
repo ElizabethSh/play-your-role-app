@@ -4,11 +4,13 @@
   --blue-300: #0b95cb;
   --gray-100: #a4a4a4;
   --red-100: #b35568;
+  --pink: #e8cfd7;
   --white: #f2f1ed;
 
   --background-color-info: rgba(7, 57, 78, 0.9);
   --background-color-primary: var(--blue-100);
   --background-color-secondary: var(--white);
+  --background-color-hover: var(--pink);
   --color-button-secondary: var(--blue-200);
   --color-link-hover: var(--blue-300);
   --color-scrollbar-thumb: var(--gray-100);

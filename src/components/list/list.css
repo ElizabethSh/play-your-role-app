@@ -26,14 +26,33 @@
   border-radius: 0.625rem;
 }
 
-.characters-item {
+.character-link {
   align-items: center;
   border-bottom: 1px solid var(--color-button-secondary);
+  border: 2px solid transparent;
+  color: var(--color-button-secondary);
   display: grid;
   gap: 1rem;
   grid-template: "logo name ability options" / min-content 1fr 1fr min-content;
-  list-style-type: none;
   padding: 0.5rem;
+  text-decoration: none;
+  width: 100%;
+}
+
+.character-link:hover,
+.character-link:focus {
+  background-color: var(--background-color-hover);
+}
+
+.character-link:focus,
+.character-link:focus-visible {
+  border-radius: 0.25rem;
+  border: 2px solid var(--red-100);
+  outline: none;
+}
+
+.characters-item {
+  list-style-type: none;
 }
 
 .avatar {
@@ -46,6 +65,5 @@
 }
 
 .character-name {
-  font-size: 1.5rem;
   font-weight: bold;
 }

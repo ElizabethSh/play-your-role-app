@@ -1,6 +1,8 @@
 import React from "react";
+import { Link } from "react-router";
 
 import { avatar } from "../../icons";
+import { AppRoute } from "../../settings";
 import { Character } from "../../types/character";
 
 import "./list.css";
@@ -14,16 +16,21 @@ const CharactersList: React.FC<CharactersListProps> = ({ characters }) => {
     <ul className="characters-list">
       {characters.map((character) => (
         <li key={character.id} className="characters-item">
-          {avatar}
-          <h3 className="character-name">{character.name}</h3>
-          <p>Abilities</p>
-          <select name="options">
-            <option value="view">View</option>
-            <option value="edit" selected>
-              Edit
-            </option>
-            <option value="delete">Delete</option>
-          </select>
+          <Link
+            to={`${AppRoute.Characters}/${character.id}`}
+            className="character-link"
+          >
+            {avatar}
+            <h3 className="character-name">{character.name}</h3>
+            <p>Abilities</p>
+            <select name="options">
+              <option value="view">View</option>
+              <option value="edit" selected>
+                Edit
+              </option>
+              <option value="delete">Delete</option>
+            </select>
+          </Link>
         </li>
       ))}
     </ul>
