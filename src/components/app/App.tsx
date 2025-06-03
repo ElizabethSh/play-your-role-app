@@ -11,6 +11,9 @@ const CharacterPage = React.lazy(() => import("../../pages/characters/list"));
 const CharacterDetailsPage = React.lazy(
   () => import("../../pages/characters/item")
 );
+const NewCharacterPage = React.lazy(
+  () => import("../../pages/characters/form")
+);
 
 const App = () => {
   return (
@@ -20,7 +23,7 @@ const App = () => {
           <Route path={AppRoute.Root} element={<HomePage />} />
           <Route path={AppRoute.Characters} element={<CharacterPage />} />
           <Route path={AppRoute.Character} element={<CharacterDetailsPage />} />
-          <Route path={AppRoute.NewCharacter} />
+          <Route path={AppRoute.NewCharacter} element={<NewCharacterPage />} />
           <Route path={AppRoute.NotFound} element={<NotFoundPage />} />
         </Route>
       </Routes>
