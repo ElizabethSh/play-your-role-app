@@ -5,7 +5,7 @@ import { logo } from "../../icons";
 import { AppRoute } from "../../settings";
 import Loader from "../loader";
 
-import "./layout.css";
+import "./layout.scss";
 
 const Layout: React.FC = () => {
   const { pathname } = useLocation();

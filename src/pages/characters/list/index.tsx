@@ -5,7 +5,7 @@ import CharactersList from "../../../components/list";
 import { characters } from "../../../mocks";
 import { AppRoute } from "../../../settings";
 
-import "./characters.css";
+import "./characters.scss";
 
 const CharactersPage: React.FC = () => (
   <section className="characters main-content">

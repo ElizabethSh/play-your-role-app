@@ -3,7 +3,7 @@ import React from "react";
 import { CORE_ABILITIES } from "../../../settings";
 
 import "./form.css";
-import "../../../index.css";
+import "../../../index.scss";
 
 const CharacterForm: React.FC = () => {
   return (
