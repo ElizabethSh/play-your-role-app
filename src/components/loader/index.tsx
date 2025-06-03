@@ -1,5 +1,11 @@
 import React from "react";
 
-const Loader: React.FC = () => <div>Loading...</div>;
+import "./loader.css";
+
+const Loader: React.FC = () => (
+  <div className="loader">
+    <div className="loader__dual-ring" />
+  </div>
+);
 
 export default Loader;
