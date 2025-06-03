@@ -1,0 +1,32 @@
+.loader {
+  display: flex;
+  place-content: center;
+}
+
+.loader__dual-ring {
+  display: inline-block;
+  width: 5rem;
+  height: 5rem;
+  margin: 0 auto;
+}
+
+.loader__dual-ring:after {
+  content: " ";
+  display: block;
+  width: 4rem;
+  height: 4rem;
+  margin: 0.5rem;
+  border-radius: 50%;
+  border: 6px solid var(--loader-color);
+  border-color: var(--loader-color) transparent var(--loader-color) transparent;
+  animation: loader__dual-ring 1.2s linear infinite;
+}
+
+@keyframes loader__dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

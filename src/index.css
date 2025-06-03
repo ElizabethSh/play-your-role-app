@@ -20,6 +20,7 @@
   --text-color-primary: var(--white);
   --error-text-color: var(--red-200);
   --submit-text-color: var(--green-100);
+  --loader-color: var(--red-100);
 
   --content-height: calc(100vh - 7rem - 9.5rem);
 }
