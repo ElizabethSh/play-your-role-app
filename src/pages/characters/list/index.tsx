@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router";
 
-import { characters } from "../../../../mocks";
-import { AppRoute } from "../../../../settings";
-import CharactersList from "../../../list";
+import CharactersList from "../../../components/list";
+import { characters } from "../../../mocks";
+import { AppRoute } from "../../../settings";
 
 import "./characters.css";
 
