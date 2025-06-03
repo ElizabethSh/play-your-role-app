@@ -9,3 +9,10 @@
   display: flex;
   gap: 2.5rem;
 }
+
+@media (width < 768px) {
+  .home-buttons {
+    flex-direction: column;
+    row-gap: 1.5rem;
+  }
+}

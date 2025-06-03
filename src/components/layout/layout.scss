@@ -1,0 +1,70 @@
+.layout {
+  background-color: var(--background-color-primary);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: min-content 1fr min-content;
+  height: 100vh;
+  justify-content: center;
+
+  .layout-header {
+    color: var(--text-color-primary);
+
+    .content {
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+      gap: 3rem;
+      justify-content: start;
+    }
+  }
+
+  .content {
+    display: grid;
+    height: 100%;
+    margin: 0 auto;
+    place-items: center;
+  }
+
+  .layout-footer {
+    align-items: center;
+    color: var(--text-color-primary);
+    display: flex;
+    height: 4rem;
+    justify-content: center;
+  }
+
+  @media (width > 768px) {
+    .logo {
+      height: 7rem;
+      width: 7rem;
+    }
+
+    .layout-main {
+      background-image: url("../../../public/bg-desktop.jpeg");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .content {
+      width: 80%;
+    }
+  }
+
+  @media (width <= 767px) {
+    .logo {
+      height: 5rem;
+      width: 5rem;
+      margin-left: 5%;
+    }
+
+    .layout-main {
+      background-image: url("../../../public/bg-phone.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+
+      .content:has(.home) {
+        width: 90%;
+      }
+    }
+  }
+}

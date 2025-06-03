@@ -45,22 +45,28 @@ code {
 
 .button {
   background-color: transparent;
-  text-decoration: none;
-  padding: 1rem;
   border-radius: 0.25rem;
   cursor: pointer;
   font-size: 1.5rem;
+  padding: 1rem;
+  text-align: center;
+  text-decoration: none;
+
+  @media (width <= 767px) {
+    font-size: 1.25rem;
+    padding: 0.75rem;
+  }
 }
 
 .button-primary {
   border: 2px solid var(--text-color-primary);
   color: var(--text-color-primary);
-}
 
-.button-primary:hover,
-.button-primary:focus {
-  background-color: var(--background-color-primary);
-  color: var(--text-color-primary);
+  &:hover,
+  &:focus {
+    background-color: var(--background-color-primary);
+    color: var(--text-color-primary);
+  }
 }
 
 .button-secondary {
@@ -68,12 +74,12 @@ code {
   border: 2px solid var(--color-button-secondary);
   color: var(--color-button-secondary);
   font-size: 1.5rem;
-}
 
-.button-secondary:hover,
-.button-secondary:focus {
-  background-color: var(--background-color-info);
-  color: var(--text-color-primary);
+  &:hover,
+  &:focus {
+    background-color: var(--background-color-info);
+    color: var(--text-color-primary);
+  }
 }
 
 .main-title {
@@ -82,13 +88,29 @@ code {
   font-weight: 600;
   margin: 0;
   text-align: center;
+  word-break: break-word;
+
+  @media (width <= 767px) {
+    font-size: 3rem;
+  }
 }
 
 .main-content {
   background-color: var(--background-color-secondary);
   height: 100%;
-  padding: 5rem 4rem 2rem;
+  padding-top: 5rem;
+  padding-bottom: 0.75rem;
   width: 100%;
+
+  @media (width >= 768px) {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+
+  @media (width < 768px) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }
 
 .label {
@@ -105,4 +127,7 @@ code {
   border: 2px solid var(--background-color-info);
   font-size: 1.25rem;
   padding: 0.25rem 0.5rem;
+}
+
+@media (width <= 767px) {
 }
