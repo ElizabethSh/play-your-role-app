@@ -94,6 +94,9 @@ code {
   @media (width <= 767px) {
     font-size: 3rem;
   }
+  @media (width <= 480px) {
+    font-size: 2rem;
+  }
 }
 
 .main-content {
@@ -121,13 +124,18 @@ code {
 
 .label {
   color: var(--background-color-info);
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 600;
-  margin: 0 0 1.5rem;
+  margin: 0rem;
   text-transform: capitalize;
+
+  @media (width > 1280px) {
+    font-size: 1.5rem;
+  }
 }
 
-.input {
+.input,
+.textarea {
   background-color: transparent;
   border-radius: 0.25rem;
   border: 2px solid var(--background-color-info);
