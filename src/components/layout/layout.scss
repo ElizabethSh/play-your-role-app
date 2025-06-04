@@ -23,6 +23,13 @@
     height: 100%;
     margin: 0 auto;
     place-items: center;
+
+    @media (width > 768px) {
+      width: 90%;
+    }
+    @media (width > 1200px) {
+      width: 1200px;
+    }
   }
 
   .layout-footer {
@@ -44,10 +51,6 @@
       background-image: url("../../../public/bg-desktop.jpeg");
       background-repeat: no-repeat;
       background-size: cover;
-    }
-
-    .content {
-      width: 90%;
     }
   }
 
