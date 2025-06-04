@@ -27,6 +27,7 @@
 
   .layout-footer {
     align-items: center;
+    background-color: var(--background-color-primary);
     color: var(--text-color-primary);
     display: flex;
     height: 4rem;
@@ -53,8 +54,8 @@
   @media (width <= 767px) {
     .logo {
       height: 5rem;
-      width: 5rem;
       margin-left: 5%;
+      width: 5rem;
     }
 
     .layout-main {
