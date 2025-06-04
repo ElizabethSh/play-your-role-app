@@ -2,25 +2,26 @@
   --blue-100: #1f2629;
   --blue-200: #043a51;
   --blue-300: #0b95cb;
+  --blue-400: #dde3e6;
   --gray-100: #a4a4a4;
   --green-100: #358b66;
   --red-100: #b35568;
   --red-200: #bc3f3f;
-  --pink: #e8cfd7;
   --white: #f2f1ed;
 
+  --abilities-background-color: var(--blue-400);
+  --background-color-hover: var(--blue-400);
   --background-color-info: rgba(7, 57, 78, 0.9);
   --background-color-primary: var(--blue-100);
   --background-color-secondary: var(--white);
-  --background-color-hover: var(--pink);
   --color-button-secondary: var(--blue-200);
   --color-link-hover: var(--blue-300);
   --color-scrollbar-thumb: var(--gray-100);
-  --home-page-header-color: var(--red-100);
-  --text-color-primary: var(--white);
   --error-text-color: var(--red-200);
-  --submit-text-color: var(--green-100);
+  --home-page-header-color: var(--red-100);
   --loader-color: var(--red-100);
+  --submit-text-color: var(--green-100);
+  --text-color-primary: var(--white);
 
   --content-height: calc(100vh - 7rem - 9.5rem);
 }
@@ -45,22 +46,28 @@ code {
 
 .button {
   background-color: transparent;
-  text-decoration: none;
-  padding: 1rem;
   border-radius: 0.25rem;
   cursor: pointer;
   font-size: 1.5rem;
+  padding: 1rem;
+  text-align: center;
+  text-decoration: none;
+
+  @media (width <= 767px) {
+    font-size: 1.25rem;
+    padding: 0.75rem;
+  }
 }
 
 .button-primary {
   border: 2px solid var(--text-color-primary);
   color: var(--text-color-primary);
-}
 
-.button-primary:hover,
-.button-primary:focus {
-  background-color: var(--background-color-primary);
-  color: var(--text-color-primary);
+  &:hover,
+  &:focus {
+    background-color: var(--background-color-primary);
+    color: var(--text-color-primary);
+  }
 }
 
 .button-secondary {
@@ -68,12 +75,12 @@ code {
   border: 2px solid var(--color-button-secondary);
   color: var(--color-button-secondary);
   font-size: 1.5rem;
-}
 
-.button-secondary:hover,
-.button-secondary:focus {
-  background-color: var(--background-color-info);
-  color: var(--text-color-primary);
+  &:hover,
+  &:focus {
+    background-color: var(--background-color-info);
+    color: var(--text-color-primary);
+  }
 }
 
 .main-title {
@@ -82,24 +89,53 @@ code {
   font-weight: 600;
   margin: 0;
   text-align: center;
+  word-break: break-word;
+
+  @media (width <= 767px) {
+    font-size: 3rem;
+  }
+  @media (width <= 480px) {
+    font-size: 2rem;
+  }
 }
 
 .main-content {
   background-color: var(--background-color-secondary);
   height: 100%;
-  padding: 5rem 4rem 2rem;
+  padding-bottom: 0.75rem;
+  padding-top: 5rem;
   width: 100%;
+
+  @media (width >= 768px) {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  @media (width < 768px) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  @media (width > 1280px) {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
 }
 
 .label {
   color: var(--background-color-info);
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 600;
-  margin: 0 0 1.5rem;
+  margin: 0rem;
   text-transform: capitalize;
+
+  @media (width > 1280px) {
+    font-size: 1.5rem;
+  }
 }
 
-.input {
+.input,
+.textarea {
   background-color: transparent;
   border-radius: 0.25rem;
   border: 2px solid var(--background-color-info);

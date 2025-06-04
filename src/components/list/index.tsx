@@ -5,7 +5,7 @@ import { avatar } from "../../icons";
 import { AppRoute } from "../../settings";
 import { Character } from "../../types/character";
 
-import "./list.css";
+import "./list.scss";
 
 type CharactersListProps = {
   characters: Character[];

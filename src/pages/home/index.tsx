@@ -3,8 +3,8 @@ import { Link } from "react-router";
 
 import { AppRoute } from "../../settings";
 
-import "../../index.css";
-import "./home.css";
+import "../../index.scss";
+import "./home.scss";
 
 const HomePage: React.FC = () => (
   <div className="home">

@@ -5,7 +5,7 @@ import { arrow_left, avatar } from "../../../icons";
 import { characters } from "../../../mocks"; // TODO: replace with real data
 import { AppRoute, CORE_ABILITIES } from "../../../settings";
 
-import "./item.css";
+import "./item.scss";
 
 const CharacterDetailsPage: React.FC = () => {
   const { id } = useParams();

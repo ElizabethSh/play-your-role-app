@@ -51,6 +51,7 @@ export const avatar = (
 
 export const logo = (
   <svg
+    className="logo"
     width="152"
     height="152"
     viewBox="0 0 152 152"

@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./loader.css";
+import "./loader.scss";
 
 const Loader: React.FC = () => (
   <div className="loader">
