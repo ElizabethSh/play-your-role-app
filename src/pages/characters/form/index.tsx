@@ -23,7 +23,7 @@ const CharacterForm: React.FC = () => {
           />
         </fieldset>
         <fieldset className="new-character-form-fieldset abilities">
-          <legend className="abilities-title">Core abilities</legend>
+          <legend className="new-character-form-legend">Core abilities</legend>
           <ul className="abilities-list">
             {CORE_ABILITIES.map((ability) => (
               <li className="ability" key={ability}>
@@ -46,6 +46,11 @@ const CharacterForm: React.FC = () => {
               </li>
             ))}
           </ul>
+        </fieldset>
+        <fieldset className="new-character-form-fieldset notes">
+          <legend className="new-character-form-legend">Notes</legend>
+          <label className="label">Tell us about character</label>
+          <textarea className="textarea" rows={3}></textarea>
         </fieldset>
         <div className="new-character-form-buttons">
           <button className="button cancel-button" type="reset">
