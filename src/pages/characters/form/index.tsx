@@ -39,10 +39,8 @@ const CharacterForm: React.FC = () => {
     : "Invalid name";
 
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
-    if (Object.keys(errors).length === 0) {
-      addNewCharacter(data);
-      navigate(AppRoute.Characters);
-    }
+    addNewCharacter(data);
+    navigate(AppRoute.Characters);
   };
 
   const checkAbilitiesErrors = () => {
@@ -90,7 +88,10 @@ const CharacterForm: React.FC = () => {
                   max="20"
                   min="1"
                   placeholder="00"
-                  {...register(ability, { required: true, valueAsNumber: true })} // make it required
+                  {...register(ability, {
+                    required: true,
+                    valueAsNumber: true,
+                  })} // make it required
                   type="number"
                 />
               </li>
