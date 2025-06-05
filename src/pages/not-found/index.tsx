@@ -12,7 +12,7 @@ const NotFoundPage: React.FC = () => {
       <p className="not-found-description">
         Sorry, the page you are looking for does not exist.
       </p>
-      <Link className="button button-primary" to={AppRoute.Root}>
+      <Link className="link-as-button button-primary" to={AppRoute.Root}>
         Go back to the main page
       </Link>
     </div>

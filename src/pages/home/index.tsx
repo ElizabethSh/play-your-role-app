@@ -10,10 +10,13 @@ const HomePage: React.FC = () => (
   <div className="home">
     <h1 className="main-title">Start new adventure!</h1>
     <div className="home-buttons">
-      <Link className="button button-primary" to={AppRoute.NewCharacter}>
+      <Link
+        className="link-as-button button-primary"
+        to={AppRoute.NewCharacter}
+      >
         Create new character
       </Link>
-      <Link className="button button-primary" to={AppRoute.Characters}>
+      <Link className="link-as-button button-primary" to={AppRoute.Characters}>
         View characters
       </Link>
     </div>

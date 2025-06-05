@@ -45,14 +45,12 @@ code {
     monospace;
 }
 
-.button {
-  background-color: transparent;
-  border-radius: 0.25rem;
-  cursor: pointer;
-  font-size: 1.5rem;
-  padding: 1rem;
-  text-align: center;
+.link-as-button {
   text-decoration: none;
+  text-align: center;
+  padding: 1rem;
+  font-size: 1.5rem;
+  border-radius: 0.25rem;
 
   @media (width <= 767px) {
     font-size: 1.25rem;
@@ -129,6 +127,11 @@ code {
   font-weight: 600;
   margin: 0rem;
   text-transform: capitalize;
+
+  &.required:after {
+    content: "*";
+    color: var(--error-text-color);
+  }
 
   @media (width > 1280px) {
     font-size: 1.5rem;
