@@ -43,7 +43,7 @@ const CharacterForm: React.FC = () => {
     navigate(AppRoute.Characters);
   };
 
-  const checkAbilitiesErrors = () => {
+  const hasAbilitiesErrors = () => {
     const errorKeys = Object.keys(errors);
     return errorKeys.some((errorKey) =>
       CORE_ABILITIES.includes(errorKey as (typeof CORE_ABILITIES)[number])
@@ -97,7 +97,7 @@ const CharacterForm: React.FC = () => {
               </li>
             ))}
           </ul>
-          {checkAbilitiesErrors() && (
+          {hasAbilitiesErrors() && (
             <p className="error-message">All these fields are required</p>
           )}
         </fieldset>

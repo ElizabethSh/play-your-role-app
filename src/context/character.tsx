@@ -20,7 +20,7 @@ export const CharacterProvider = ({ children }: CharacterProps) => {
   const [characters, setCharacters] = useState<Character[]>([]);
 
   const addNewCharacter = (data: FormFields) => {
-    const new_character: Character = {
+    const newCharacter: Character = {
       id: crypto.randomUUID(),
       name: data.name,
       notes: data.notes,
@@ -51,7 +51,7 @@ export const CharacterProvider = ({ children }: CharacterProps) => {
         },
       },
     };
-    setCharacters((prevCharacters) => [...prevCharacters, new_character]);
+    setCharacters((prevCharacters) => [...prevCharacters, newCharacter]);
   };
 
   const state = {
