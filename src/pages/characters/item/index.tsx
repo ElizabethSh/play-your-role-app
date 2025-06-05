@@ -14,7 +14,7 @@ const CharacterDetailsPage: React.FC = () => {
 
   const character = useMemo(() => {
     return characters.find((character) => character.id === id);
-  }, [id]);
+  }, [id, characters]);
 
   useEffect(() => {
     if (!character) {
