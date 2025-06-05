@@ -1,8 +1,8 @@
 import React, { useEffect, useMemo } from "react";
-import { Link, Navigate, useNavigate, useParams } from "react-router";
+import { Link, useNavigate, useParams } from "react-router";
 
+import { useCharacters } from "../../../context/character";
 import { arrow_left, avatar } from "../../../icons";
-import { characters } from "../../../mocks"; // TODO: replace with real data
 import { AppRoute, CORE_ABILITIES } from "../../../settings";
 
 import "./item.scss";
@@ -10,16 +10,12 @@ import "./item.scss";
 const CharacterDetailsPage: React.FC = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { characters } = useCharacters();
 
-  if (!characters.length) {
-    return <Navigate to={AppRoute.Characters} />;
-  }
   const character = useMemo(() => {
     return characters.find((character) => character.id === id);
   }, [id]);
 
-  // FIXME: flickering issue when navigating to a character that does not exist
-  // probably loader will fix it
   useEffect(() => {
     if (!character) {
       navigate(AppRoute.NotFound);
