@@ -2,6 +2,7 @@ import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 
+import Button from "../../../components/button";
 import { useCharacters } from "../../../context/character";
 import { AppRoute, CORE_ABILITIES } from "../../../settings";
 
@@ -52,7 +53,10 @@ const CharacterForm: React.FC = () => {
       <h1 className="main-title new-character-title">Add new character</h1>
       <form className="new-character-form" onSubmit={handleSubmit(onSubmit)}>
         <fieldset className="new-character-form-fieldset new-character-name">
-          <label className="new-character-form-label label" htmlFor="name">
+          <label
+            className="new-character-form-label label required"
+            htmlFor="name"
+          >
             Name
           </label>
           <input
@@ -73,7 +77,7 @@ const CharacterForm: React.FC = () => {
             {CORE_ABILITIES.map((ability) => (
               <li className="ability" key={ability}>
                 <label
-                  className="ability-label label"
+                  className="ability-label label required"
                   key={ability}
                   htmlFor={ability}
                 >
@@ -108,16 +112,13 @@ const CharacterForm: React.FC = () => {
           />
         </fieldset>
         <div className="new-character-form-buttons">
-          <button className="button cancel-button" type="reset">
-            Reset
-          </button>
-          <button
-            className="button submit-button"
-            type="submit"
+          <Button variant="danger" type="reset" label="Reset"></Button>
+          <Button
             disabled={isSubmitting}
-          >
-            {isSubmitting ? "Submitting..." : "Submit"}
-          </button>
+            label={isSubmitting ? "Submitting..." : "Submit"}
+            variant="confirm"
+            type="submit"
+          />
         </div>
       </form>
     </section>
