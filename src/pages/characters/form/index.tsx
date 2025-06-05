@@ -88,7 +88,7 @@ const CharacterForm: React.FC = () => {
                   {...register(ability, {
                     required: true,
                     valueAsNumber: true,
-                  })} // make it required
+                  })}
                   type="number"
                 />
               </li>
