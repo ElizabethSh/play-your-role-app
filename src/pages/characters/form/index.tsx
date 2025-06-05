@@ -44,10 +44,7 @@ const CharacterForm: React.FC = () => {
   };
 
   const hasAbilitiesErrors = () => {
-    const errorKeys = Object.keys(errors);
-    return errorKeys.some((errorKey) =>
-      CORE_ABILITIES.includes(errorKey as (typeof CORE_ABILITIES)[number])
-    );
+    return CORE_ABILITIES.some((ability) => errors[ability]);
   };
 
   return (
