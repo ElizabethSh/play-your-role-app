@@ -19,6 +19,7 @@
   --color-scrollbar-thumb: var(--gray-100);
   --error-text-color: var(--red-200);
   --home-page-header-color: var(--red-100);
+  --input-border-color-hover: var(--blue-300);
   --loader-color: var(--red-100);
   --submit-text-color: var(--green-100);
   --text-color-primary: var(--white);
@@ -141,4 +142,10 @@ code {
   border: 2px solid var(--background-color-info);
   font-size: 1.25rem;
   padding: 0.25rem 0.5rem;
+
+  &:hover,
+  &:focus {
+    border: 2px solid var(--input-border-color-hover);
+    outline: none;
+  }
 }

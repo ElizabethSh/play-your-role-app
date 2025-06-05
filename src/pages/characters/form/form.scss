@@ -5,7 +5,7 @@
 
   .new-character-form {
     display: grid;
-    gap: 6rem;
+    gap: 5rem;
     grid-template-rows: repeat(4, min-content);
 
     @media (width < 768px) {
@@ -36,7 +36,7 @@
         display: grid;
         gap: 1rem;
         grid-template-columns: repeat(6, 1fr);
-        margin: 0;
+        margin: 0 0 1rem;
         padding: 0;
         justify-items: center;
 
@@ -46,6 +46,11 @@
         }
         @media (width < 480px) {
           grid-template-columns: repeat(2, 1fr);
+        }
+        @media (width >= 768px) {
+          background-color: var(--blue-400);
+          border-radius: 0.5rem;
+          padding: 1rem 0;
         }
 
         .ability {
@@ -71,6 +76,7 @@
 
       &.notes {
         display: grid;
+        gap: 1rem;
 
         .textarea {
           resize: none;
@@ -86,11 +92,7 @@
       width: 100%;
 
       input {
-        width: calc(100% / 2);
-
-        @media (width < 768px) {
-          width: 100%;
-        }
+        width: 100%;
       }
     }
   }
@@ -120,6 +122,11 @@
     background-color: var(--submit-text-color);
     color: var(--text-color-primary);
   }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 }
 
 .cancel-button {
@@ -132,4 +139,10 @@
     background-color: var(--error-text-color);
     color: var(--text-color-primary);
   }
+}
+
+.error-message {
+  color: var(--error-text-color);
+  margin: 0;
+  font-weight: 600;
 }
