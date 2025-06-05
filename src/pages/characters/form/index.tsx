@@ -8,6 +8,11 @@ import { AppRoute, CORE_ABILITIES } from "../../../settings";
 import "./form.scss";
 import "../../../index.scss";
 
+const validationErrors = {
+  required: "This field is required",
+  pattern: "Only letters and spaces are allowed",
+};
+
 export type FormFields = {
   name: string;
   notes: string;
@@ -28,6 +33,10 @@ const CharacterForm: React.FC = () => {
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<FormFields>();
+
+  const nameError = errors?.name?.type
+    ? validationErrors[errors?.name?.type as keyof typeof validationErrors]
+    : "Invalid name";
 
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
     if (Object.keys(errors).length === 0) {
@@ -55,12 +64,13 @@ const CharacterForm: React.FC = () => {
             className="input"
             id="name"
             placeholder="Type your character name here"
-            {...register("name", { required: true })}
+            {...register("name", {
+              required: true,
+              pattern: /^[a-zA-Z\s]+$/,
+            })}
             type="text"
           />
-          {!!errors.name && (
-            <p className="error-message">This field is required</p>
-          )}
+          {!!errors.name && <p className="error-message">{nameError}</p>}
         </fieldset>
         <fieldset className="new-character-form-fieldset abilities">
           <legend className="new-character-form-legend">Core abilities</legend>
