@@ -18,12 +18,12 @@ const validationErrors = {
 export type FormFields = {
   name: string;
   notes: string;
-  strength: number;
-  dexterity: number;
-  constitution: number;
-  intelligence: number;
-  wisdom: number;
-  charisma: number;
+  strength: number | "";
+  dexterity: number | "";
+  constitution: number | "";
+  intelligence: number | "";
+  wisdom: number | "";
+  charisma: number | "";
 };
 
 const CharacterForm: React.FC = () => {
@@ -42,7 +42,18 @@ const CharacterForm: React.FC = () => {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm<FormFields>();
+  } = useForm<FormFields>({
+    defaultValues: {
+      name: character?.name || "",
+      notes: character?.notes || "",
+      strength: character?.coreAbilities.strength.score || "",
+      dexterity: character?.coreAbilities.dexterity.score || "",
+      constitution: character?.coreAbilities.constitution.score || "",
+      intelligence: character?.coreAbilities.intelligence.score || "",
+      wisdom: character?.coreAbilities.wisdom.score || "",
+      charisma: character?.coreAbilities.charisma.score || "",
+    },
+  });
 
   const nameError = errors?.name?.type
     ? validationErrors[errors?.name?.type as keyof typeof validationErrors]
@@ -74,7 +85,6 @@ const CharacterForm: React.FC = () => {
           </label>
           <input
             className="input"
-            defaultValue={character?.name ? character.name : ""}
             id="name"
             placeholder="Type your character name here"
             {...register("name", {
@@ -99,11 +109,6 @@ const CharacterForm: React.FC = () => {
                 </label>
                 <input
                   className="ability-input input"
-                  defaultValue={
-                    character?.coreAbilities[ability]?.score
-                      ? character.coreAbilities[ability].score
-                      : ""
-                  }
                   id={ability}
                   max="20"
                   min="1"
@@ -128,7 +133,6 @@ const CharacterForm: React.FC = () => {
             className="textarea"
             rows={3}
             {...register("notes", { required: false })}
-            defaultValue={character?.notes ? character.notes : ""}
           />
         </fieldset>
         <div className="new-character-form-buttons">

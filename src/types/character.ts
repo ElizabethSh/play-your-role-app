@@ -1,6 +1,6 @@
 type Ability = {
-  readonly score: number;
-  readonly modifier: number;
+  readonly score: number | "";
+  readonly modifier: number | "";
 };
 
 export type Character = {
