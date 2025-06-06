@@ -10,7 +10,7 @@
 
   .avatar {
     border-radius: 50%;
-    border: 3px solid var(--background-color-info);
+    border: 3px solid var(--text-color-primary);
     grid-area: avatar;
     padding: 1rem;
 
@@ -24,7 +24,7 @@
     }
 
     path {
-      stroke: var(--background-color-info);
+      stroke: var(--text-color-primary);
     }
   }
 
@@ -43,7 +43,7 @@
 
     .character-back-link {
       align-items: center;
-      color: var(--background-color-info);
+      color: var(--text-color-primary);
       display: flex;
       gap: 1rem;
       grid-area: link;
@@ -67,7 +67,7 @@
 }
 
 .character-title {
-  color: var(--background-color-info);
+  color: var(--text-color-primary);
   font-size: 2.5rem;
   font-weight: 600;
   grid-area: title;
@@ -109,7 +109,7 @@
   }
 
   .ability-name {
-    color: var(--background-color-info);
+    color: var(--text-color-primary);
     font-size: 1.1rem;
     font-weight: 600;
     margin: 0;
@@ -133,8 +133,8 @@
   }
 
   .ability-value {
-    border: 2px solid var(--background-color-info);
-    color: var(--background-color-info);
+    border: 2px solid var(--text-color-primary);
+    color: var(--text-color-primary);
     font-size: 2rem;
     font-weight: 600;
     height: 7rem;
@@ -149,7 +149,7 @@
 
   .ability-modifier {
     background-color: var(--background-color-info);
-    color: var(--text-color-primary);
+    color: var(--text-color-secondary);
     font-size: 1.5rem;
     height: 3rem;
     margin: -2rem;
@@ -163,7 +163,7 @@
   }
 
   .character-notes {
-    color: var(--background-color-info);
+    color: var(--text-color-primary);
     font-size: 1rem;
     height: 18rem;
     margin: 0;
