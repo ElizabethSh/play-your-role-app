@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import { Route, Routes } from "react-router";
+import { Route, Routes } from "react-router-dom";
 
 import { AppRoute } from "../../settings";
 import Layout from "../layout";

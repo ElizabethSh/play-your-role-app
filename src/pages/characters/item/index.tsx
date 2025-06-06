@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo } from "react";
-import { Link, useNavigate, useParams } from "react-router";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 import { useCharacters } from "../../../context/character";
 import { arrow_left, avatar } from "../../../icons";
