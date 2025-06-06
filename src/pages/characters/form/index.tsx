@@ -1,11 +1,12 @@
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useNavigate, useParams } from "react-router";
+import { useNavigate, useParams } from "react-router-dom";
 
 import Button from "../../../components/button";
 import { useCharacters } from "../../../context/character";
 import { AppRoute, CORE_ABILITIES } from "../../../settings";
 import { Character } from "../../../types/character";
+import NotFoundPage from "../../not-found";
 
 import "./form.scss";
 import "../../../index.scss";
@@ -34,8 +35,12 @@ const CharacterForm: React.FC = () => {
   let title = "Add new character";
   let character: Character | undefined = undefined;
   if (param.id) {
-    title = "Edit character";
     character = characters.find((character) => character.id === param.id);
+
+    if (!character) {
+      return <NotFoundPage />;
+    }
+    title = "Edit character";
   }
 
   const {
