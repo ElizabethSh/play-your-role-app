@@ -1,17 +1,19 @@
 import React from "react";
 import { Link } from "react-router";
 
+import { useCharacters } from "../../context/character";
 import { avatar } from "../../icons";
 import { AppRoute } from "../../settings";
-import { Character } from "../../types/character";
 
 import "./list.scss";
 
-type CharactersListProps = {
-  characters: Character[];
-};
+const CharactersList: React.FC = () => {
+  const { deleteCharacter, characters } = useCharacters();
 
-const CharactersList: React.FC<CharactersListProps> = ({ characters }) => {
+  const handleDelete = (id: string) => {
+    deleteCharacter(id);
+  };
+
   return (
     <ul className="characters-list">
       {characters.map((character) => (
@@ -23,14 +25,19 @@ const CharactersList: React.FC<CharactersListProps> = ({ characters }) => {
             {avatar}
             <h3 className="character-name">{character.name}</h3>
             <p>Abilities</p>
-            <select name="options">
-              <option value="view">View</option>
-              <option value="edit" selected>
-                Edit
-              </option>
-              <option value="delete">Delete</option>
-            </select>
           </Link>
+          <div className="options">
+            <Link
+              className="link-as-button"
+              to={`${AppRoute.Characters}/${character.id}`}
+            >
+              View
+            </Link>
+            <button type="button">Edit</button>
+            <button type="button" onClick={() => handleDelete(character.id)}>
+              Delete
+            </button>
+          </div>
         </li>
       ))}
     </ul>

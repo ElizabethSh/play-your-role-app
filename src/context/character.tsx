@@ -10,6 +10,7 @@ type CharacterProps = {
 type CharacterContextType = {
   characters: Character[];
   addNewCharacter: (data: FormFields) => void;
+  deleteCharacter: (id: string) => void;
 };
 
 export const CharacterContext = createContext<CharacterContextType | undefined>(
@@ -54,9 +55,17 @@ export const CharacterProvider = ({ children }: CharacterProps) => {
     setCharacters((prevCharacters) => [...prevCharacters, newCharacter]);
   };
 
+  const deleteCharacter = (id: string) => {
+    const updatedCharacters = characters.filter(
+      (character) => character.id !== id
+    );
+    setCharacters(updatedCharacters);
+  };
+
   const state = {
     characters,
     addNewCharacter,
+    deleteCharacter,
   };
 
   return (

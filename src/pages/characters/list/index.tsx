@@ -14,7 +14,7 @@ const CharactersPage: React.FC = () => {
     <section className="characters main-content">
       <h1 className="main-title">Your characters</h1>
       {characters.length ? (
-        <CharactersList characters={characters} />
+        <CharactersList />
       ) : (
         <>
           <p className="characters-empty-list">
