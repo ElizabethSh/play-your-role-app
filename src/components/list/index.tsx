@@ -28,13 +28,22 @@ const CharactersList: React.FC = () => {
           </Link>
           <div className="options">
             <Link
-              className="link-as-button"
+              className="link-as-button option"
               to={`${AppRoute.Characters}/${character.id}`}
             >
               View
             </Link>
-            <button type="button">Edit</button>
-            <button type="button" onClick={() => handleDelete(character.id)}>
+            <Link
+              className="link-as-button option"
+              to={`${AppRoute.Characters}/${character.id}/edit`}
+            >
+              Edit
+            </Link>
+            <button
+              className="option danger"
+              type="button"
+              onClick={() => handleDelete(character.id)}
+            >
               Delete
             </button>
           </div>
