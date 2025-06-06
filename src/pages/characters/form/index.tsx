@@ -60,7 +60,7 @@ const CharacterForm: React.FC = () => {
     : "Invalid name";
 
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
-    if (character?.name) {
+    if (param.id && character) {
       editCharacter(character.id, data);
     } else {
       addNewCharacter(data);
