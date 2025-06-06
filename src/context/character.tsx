@@ -21,75 +21,53 @@ export const CharacterContext = createContext<CharacterContextType | undefined>(
 export const CharacterProvider = ({ children }: CharacterProps) => {
   const [characters, setCharacters] = useState<Character[]>([]);
 
+  const buildCoreAbilities = (data: FormFields) => {
+    return {
+      strength: {
+        score: data.strength,
+        modifier: Math.floor((Number(data.strength) - 10) / 2),
+      },
+      dexterity: {
+        score: data.dexterity,
+        modifier: Math.floor((Number(data.dexterity) - 10) / 2),
+      },
+      constitution: {
+        score: data.constitution,
+        modifier: Math.floor((Number(data.constitution) - 10) / 2),
+      },
+      intelligence: {
+        score: data.intelligence,
+        modifier: Math.floor((Number(data.intelligence) - 10) / 2),
+      },
+      wisdom: {
+        score: data.wisdom,
+        modifier: Math.floor((Number(data.wisdom) - 10) / 2),
+      },
+      charisma: {
+        score: data.charisma,
+        modifier: Math.floor((Number(data.charisma) - 10) / 2),
+      },
+    };
+  };
+
   const addNewCharacter = (data: FormFields) => {
     const newCharacter: Character = {
       id: crypto.randomUUID(),
       name: data.name,
       notes: data.notes,
-      coreAbilities: {
-        strength: {
-          score: data.strength,
-          modifier: Math.floor((Number(data.strength) - 10) / 2),
-        },
-        dexterity: {
-          score: data.dexterity,
-          modifier: Math.floor((Number(data.dexterity) - 10) / 2),
-        },
-        constitution: {
-          score: data.constitution,
-          modifier: Math.floor((Number(data.constitution) - 10) / 2),
-        },
-        intelligence: {
-          score: data.intelligence,
-          modifier: Math.floor((Number(data.intelligence) - 10) / 2),
-        },
-        wisdom: {
-          score: data.wisdom,
-          modifier: Math.floor((Number(data.wisdom) - 10) / 2),
-        },
-        charisma: {
-          score: data.charisma,
-          modifier: Math.floor((Number(data.charisma) - 10) / 2),
-        },
-      },
+      coreAbilities: buildCoreAbilities(data),
     };
     setCharacters((prevCharacters) => [...prevCharacters, newCharacter]);
   };
 
   const editCharacter = (id: string, data: FormFields) => {
-
     const updatedCharacters = characters.map((character) => {
       if (character.id === id) {
         return {
           ...character,
           name: data.name,
           notes: data.notes,
-          coreAbilities: {
-            strength: {
-              score: data.strength,
-              modifier: Math.floor((Number(data.strength) - 10) / 2),
-            },
-            dexterity: {
-              score: data.dexterity,
-              modifier: Math.floor((Number(data.dexterity) - 10) / 2),
-            },
-            constitution: {
-              score: data.constitution,
-              modifier: Math.floor((Number(data.constitution) - 10) / 2),
-            },
-            intelligence: {
-              score: data.intelligence,
-              modifier: Math.floor((Number(data.intelligence) - 10) / 2),
-            },
-            wisdom: {
-              score: data.wisdom,
-              modifier: Math.floor((Number(data.wisdom) - 10) / 2),
-            },
-            charisma: {
-              score: data.charisma,
-              modifier: Math.floor((Number(data.charisma) - 10) / 2),
-            },
-          },
+          coreAbilities: buildCoreAbilities(data),
         };
       }
       return character;
