@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 
 import CharactersList from "../../../components/list";
 import { useCharacters } from "../../../context/character";
@@ -14,7 +14,7 @@ const CharactersPage: React.FC = () => {
     <section className="characters main-content">
       <h1 className="main-title">Your characters</h1>
       {characters.length ? (
-        <CharactersList characters={characters} />
+        <CharactersList />
       ) : (
         <>
           <p className="characters-empty-list">

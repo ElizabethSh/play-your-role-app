@@ -21,7 +21,7 @@
   &:hover,
   &:focus {
     background-color: var(--submit-text-color);
-    color: var(--text-color-primary);
+    color: var(--text-color-secondary);
   }
 
   &:disabled {
@@ -31,13 +31,13 @@
 }
 
 .button-danger {
-  color: var(--error-text-color);
-  border: 2px solid var(--error-text-color);
+  color: var(--text-color-error);
+  border: 2px solid var(--text-color-error);
   justify-self: center;
 
   &:hover,
   &:focus {
-    background-color: var(--error-text-color);
-    color: var(--text-color-primary);
+    background-color: var(--text-color-error);
+    color: var(--text-color-secondary);
   }
 }

@@ -26,17 +26,12 @@
   }
 }
 
-.character-link {
+.characters-item {
   align-items: center;
-  border: 2px solid transparent;
   border-bottom: 1px solid var(--color-button-secondary);
-  color: var(--color-button-secondary);
   display: grid;
-  gap: 1rem;
-  grid-template: "logo name ability options" / min-content 1fr 1fr min-content;
-  padding: 0.5rem;
-  text-decoration: none;
-  width: 100%;
+  grid-template: "link options" / 1fr min-content;
+  list-style-type: none;
 
   &:hover,
   &:focus {
@@ -45,19 +40,28 @@
 
   &:focus,
   &:focus-visible {
-    border: 2px solid var(--red-100);
+    border: 2px solid var(--input-border-color-hover);
     border-radius: 0.25rem;
     outline: none;
   }
+}
+
+.character-link {
+  align-items: center;
+  border: 2px solid transparent;
+  color: var(--text-color-primary);
+  display: grid;
+  gap: 1rem;
+  grid-area: link;
+  grid-template: "logo name ability" / min-content 1fr 1fr;
+  padding: 0.5rem;
+  text-decoration: none;
+  width: 100%;
 
   @media (width <= 767px) {
     padding-left: 1rem;
     padding-right: 1rem;
   }
-}
-
-.characters-item {
-  list-style-type: none;
 }
 
 .avatar {
@@ -72,4 +76,35 @@
 .character-name {
   font-weight: bold;
   text-transform: capitalize;
+}
+
+.options {
+  grid-area: options;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+
+  .option {
+    font-size: 1rem;
+    border: none;
+    color: var(--text-color-primary);
+    padding: 0;
+
+    &.danger {
+      color: var(--text-color-error);
+      background-color: transparent;
+      cursor: pointer;
+
+      &:hover,
+      &:focus {
+        color: var(--text-color-error-hover);
+      }
+    }
+
+    &:not(.danger):hover,
+    &:not(.danger):focus {
+      color: var(--color-link-hover);
+    }
+  }
 }

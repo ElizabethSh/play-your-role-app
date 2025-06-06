@@ -7,6 +7,7 @@
   --green-100: #358b66;
   --red-100: #b35568;
   --red-200: #bc3f3f;
+  --red-300: #a90707;
   --white: #f2f1ed;
 
   --abilities-background-color: var(--blue-400);
@@ -17,12 +18,15 @@
   --color-button-secondary: var(--blue-200);
   --color-link-hover: var(--blue-300);
   --color-scrollbar-thumb: var(--gray-100);
-  --error-text-color: var(--red-200);
   --home-page-header-color: var(--red-100);
   --input-border-color-hover: var(--blue-300);
   --loader-color: var(--red-100);
   --submit-text-color: var(--green-100);
-  --text-color-primary: var(--white);
+
+  --text-color-primary: var(--blue-200);
+  --text-color-secondary: var(--white);
+  --text-color-error: var(--red-200);
+  --text-color-error-hover: var(--red-300);
 
   --content-height: calc(100vh - 7rem - 9.5rem);
 }
@@ -59,13 +63,13 @@ code {
 }
 
 .button-primary {
-  border: 2px solid var(--text-color-primary);
-  color: var(--text-color-primary);
+  border: 2px solid var(--text-color-secondary);
+  color: var(--text-color-secondary);
 
   &:hover,
   &:focus {
     background-color: var(--background-color-primary);
-    color: var(--text-color-primary);
+    color: var(--text-color-secondary);
   }
 }
 
@@ -78,7 +82,7 @@ code {
   &:hover,
   &:focus {
     background-color: var(--background-color-info);
-    color: var(--text-color-primary);
+    color: var(--text-color-secondary);
   }
 }
 
@@ -122,7 +126,7 @@ code {
 }
 
 .label {
-  color: var(--background-color-info);
+  color: var(--text-color-primary);
   font-size: 1.25rem;
   font-weight: 600;
   margin: 0rem;
@@ -130,7 +134,7 @@ code {
 
   &.required:after {
     content: "*";
-    color: var(--error-text-color);
+    color: var(--text-color-error);
   }
 
   @media (width > 1280px) {
@@ -142,7 +146,7 @@ code {
 .textarea {
   background-color: transparent;
   border-radius: 0.25rem;
-  border: 2px solid var(--background-color-info);
+  border: 2px solid var(--text-color-primary);
   font-size: 1.25rem;
   padding: 0.25rem 0.5rem;
 

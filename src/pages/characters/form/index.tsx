@@ -1,10 +1,12 @@
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router-dom";
 
 import Button from "../../../components/button";
 import { useCharacters } from "../../../context/character";
 import { AppRoute, CORE_ABILITIES } from "../../../settings";
+import { Character } from "../../../types/character";
+import NotFoundPage from "../../not-found";
 
 import "./form.scss";
 import "../../../index.scss";
@@ -17,30 +19,57 @@ const validationErrors = {
 export type FormFields = {
   name: string;
   notes: string;
-  strength: number;
-  dexterity: number;
-  constitution: number;
-  intelligence: number;
-  wisdom: number;
-  charisma: number;
+  strength: number | "";
+  dexterity: number | "";
+  constitution: number | "";
+  intelligence: number | "";
+  wisdom: number | "";
+  charisma: number | "";
 };
 
 const CharacterForm: React.FC = () => {
-  const { addNewCharacter } = useCharacters();
+  const { addNewCharacter, editCharacter, characters } = useCharacters();
   const navigate = useNavigate();
+  const param = useParams();
+
+  let title = "Add new character";
+  let character: Character | undefined = undefined;
+  if (param.id) {
+    character = characters.find((character) => character.id === param.id);
+
+    if (!character) {
+      return <NotFoundPage />;
+    }
+    title = "Edit character";
+  }
 
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm<FormFields>();
+  } = useForm<FormFields>({
+    defaultValues: {
+      name: character?.name || "",
+      notes: character?.notes || "",
+      strength: character?.coreAbilities.strength.score || "",
+      dexterity: character?.coreAbilities.dexterity.score || "",
+      constitution: character?.coreAbilities.constitution.score || "",
+      intelligence: character?.coreAbilities.intelligence.score || "",
+      wisdom: character?.coreAbilities.wisdom.score || "",
+      charisma: character?.coreAbilities.charisma.score || "",
+    },
+  });
 
   const nameError = errors?.name?.type
     ? validationErrors[errors?.name?.type as keyof typeof validationErrors]
     : "Invalid name";
 
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
-    addNewCharacter(data);
+    if (param.id && character) {
+      editCharacter(character.id, data);
+    } else {
+      addNewCharacter(data);
+    }
     navigate(AppRoute.Characters);
   };
 
@@ -50,7 +79,7 @@ const CharacterForm: React.FC = () => {
 
   return (
     <section className="main-content new-character">
-      <h1 className="main-title new-character-title">Add new character</h1>
+      <h1 className="main-title new-character-title">{title}</h1>
       <form className="new-character-form" onSubmit={handleSubmit(onSubmit)}>
         <fieldset className="new-character-form-fieldset new-character-name">
           <label
@@ -112,10 +141,10 @@ const CharacterForm: React.FC = () => {
           />
         </fieldset>
         <div className="new-character-form-buttons">
-          <Button variant="danger" type="reset" label="Reset"></Button>
+          <Button variant="danger" type="reset" label="Reset" />
           <Button
             disabled={isSubmitting}
-            label={isSubmitting ? "Submitting..." : "Submit"}
+            label={isSubmitting ? "Saving..." : "Save"}
             variant="confirm"
             type="submit"
           />
