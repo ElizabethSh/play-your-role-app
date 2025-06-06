@@ -10,6 +10,7 @@ type CharacterProps = {
 type CharacterContextType = {
   characters: Character[];
   addNewCharacter: (data: FormFields) => void;
+  editCharacter: (id: string, data: FormFields) => void;
   deleteCharacter: (id: string) => void;
 };
 
@@ -55,6 +56,48 @@ export const CharacterProvider = ({ children }: CharacterProps) => {
     setCharacters((prevCharacters) => [...prevCharacters, newCharacter]);
   };
 
+  const editCharacter = (id: string, data: FormFields) => {
+    console.log("data", data);
+
+    const updatedCharacters = characters.map((character) => {
+      if (character.id === id) {
+        return {
+          ...character,
+          name: data.name,
+          notes: data.notes,
+          coreAbilities: {
+            strength: {
+              score: data.strength,
+              modifier: Math.floor((data.strength - 10) / 2),
+            },
+            dexterity: {
+              score: data.dexterity,
+              modifier: Math.floor((data.dexterity - 10) / 2),
+            },
+            constitution: {
+              score: data.constitution,
+              modifier: Math.floor((data.constitution - 10) / 2),
+            },
+            intelligence: {
+              score: data.intelligence,
+              modifier: Math.floor((data.intelligence - 10) / 2),
+            },
+            wisdom: {
+              score: data.wisdom,
+              modifier: Math.floor((data.wisdom - 10) / 2),
+            },
+            charisma: {
+              score: data.charisma,
+              modifier: Math.floor((data.charisma - 10) / 2),
+            },
+          },
+        };
+      }
+      return character;
+    });
+    setCharacters(updatedCharacters);
+  };
+
   const deleteCharacter = (id: string) => {
     const updatedCharacters = characters.filter(
       (character) => character.id !== id
@@ -65,6 +108,7 @@ export const CharacterProvider = ({ children }: CharacterProps) => {
   const state = {
     characters,
     addNewCharacter,
+    editCharacter,
     deleteCharacter,
   };
 
