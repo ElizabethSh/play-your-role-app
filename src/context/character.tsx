@@ -57,7 +57,6 @@ export const CharacterProvider = ({ children }: CharacterProps) => {
   };
 
   const editCharacter = (id: string, data: FormFields) => {
-    console.log("data", data);
 
     const updatedCharacters = characters.map((character) => {
       if (character.id === id) {
