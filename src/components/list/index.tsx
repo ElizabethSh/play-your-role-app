@@ -7,12 +7,12 @@ import { AppRoute } from "../../settings";
 
 import "./list.scss";
 
-const CharactersList: React.FC = () => {
-  const { deleteCharacter, characters } = useCharacters();
+type CharactersListProps = {
+  openDialog: (id: string) => void;
+};
 
-  const handleDelete = (id: string) => {
-    deleteCharacter(id);
-  };
+const CharactersList: React.FC<CharactersListProps> = ({ openDialog }) => {
+  const { characters } = useCharacters();
 
   return (
     <ul className="characters-list">
@@ -42,7 +42,7 @@ const CharactersList: React.FC = () => {
             <button
               className="option danger"
               type="button"
-              onClick={() => handleDelete(character.id)}
+              onClick={() => openDialog(character.id)}
             >
               Delete
             </button>
