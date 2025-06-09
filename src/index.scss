@@ -3,6 +3,7 @@
   --blue-200: #043a51;
   --blue-300: #0b95cb;
   --blue-400: #dde3e6;
+  --blue-500: #b3ddf2;
   --gray-100: #a4a4a4;
   --green-100: #358b66;
   --red-100: #b35568;
@@ -16,15 +17,17 @@
   --background-color-primary: var(--blue-100);
   --background-color-secondary: var(--white);
   --color-button-secondary: var(--blue-200);
-  --color-link-hover: var(--blue-300);
   --color-scrollbar-thumb: var(--gray-100);
   --home-page-header-color: var(--red-100);
   --input-border-color-hover: var(--blue-300);
   --loader-color: var(--red-100);
-  --submit-text-color: var(--green-100);
+
+  --color-link-hover: var(--blue-300);
+  --color-link-active: var(--blue-500);
 
   --text-color-primary: var(--blue-200);
   --text-color-secondary: var(--white);
+  --text-color-submit: var(--green-100);
   --text-color-error: var(--red-200);
   --text-color-error-hover: var(--red-300);
 
