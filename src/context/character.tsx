@@ -1,7 +1,15 @@
-import { createContext, ReactNode, useContext, useState } from "react";
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 
+import { useLocalStorage } from "../hooks/use-local-storage";
 import { FormFields } from "../pages/characters/form";
 import { Character } from "../types/character";
+import { buildCoreAbilities } from "../utils";
 
 type CharacterProps = {
   children: ReactNode;
@@ -14,6 +22,8 @@ type CharacterContextType = {
   deleteCharacter: (id: string) => void;
 };
 
+const LOCAL_STORAGE_KEY = "characters" as const;
+
 export const CharacterContext = createContext<CharacterContextType | undefined>(
   undefined
 );
@@ -21,34 +31,14 @@ export const CharacterContext = createContext<CharacterContextType | undefined>(
 export const CharacterProvider = ({ children }: CharacterProps) => {
   const [characters, setCharacters] = useState<Character[]>([]);
 
-  const buildCoreAbilities = (data: FormFields) => {
-    return {
-      strength: {
-        score: data.strength,
-        modifier: Math.floor((Number(data.strength) - 10) / 2),
-      },
-      dexterity: {
-        score: data.dexterity,
-        modifier: Math.floor((Number(data.dexterity) - 10) / 2),
-      },
-      constitution: {
-        score: data.constitution,
-        modifier: Math.floor((Number(data.constitution) - 10) / 2),
-      },
-      intelligence: {
-        score: data.intelligence,
-        modifier: Math.floor((Number(data.intelligence) - 10) / 2),
-      },
-      wisdom: {
-        score: data.wisdom,
-        modifier: Math.floor((Number(data.wisdom) - 10) / 2),
-      },
-      charisma: {
-        score: data.charisma,
-        modifier: Math.floor((Number(data.charisma) - 10) / 2),
-      },
-    };
-  };
+  const { getValue, setValue } = useLocalStorage(LOCAL_STORAGE_KEY);
+
+  useEffect(() => {
+    const storedCharacters = getValue();
+    if (storedCharacters) {
+      setCharacters(storedCharacters);
+    }
+  }, []);
 
   const addNewCharacter = (data: FormFields) => {
     const newCharacter: Character = {
@@ -57,7 +47,11 @@ export const CharacterProvider = ({ children }: CharacterProps) => {
       notes: data.notes,
       coreAbilities: buildCoreAbilities(data),
     };
-    setCharacters((prevCharacters) => [...prevCharacters, newCharacter]);
+    setCharacters((prevCharacters) => {
+      const updatedCharacters = [...prevCharacters, newCharacter];
+      setValue(updatedCharacters);
+      return updatedCharacters;
+    });
   };
 
   const editCharacter = (id: string, data: FormFields) => {
@@ -73,6 +67,7 @@ export const CharacterProvider = ({ children }: CharacterProps) => {
       return character;
     });
     setCharacters(updatedCharacters);
+    setValue(updatedCharacters);
   };
 
   const deleteCharacter = (id: string) => {
@@ -80,6 +75,7 @@ export const CharacterProvider = ({ children }: CharacterProps) => {
       (character) => character.id !== id
     );
     setCharacters(updatedCharacters);
+    setValue(updatedCharacters);
   };
 
   const state = {
