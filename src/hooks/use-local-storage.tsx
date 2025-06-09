@@ -19,14 +19,5 @@ export const useLocalStorage = (key: string) => {
     }
   };
 
-  const removeValue = () => {
-    try {
-      window.localStorage.removeItem(key);
-    } catch (error) {
-      // TODO: show a toast notification instead of console error
-      console.log(`Error removing localStorage key' "${key}":`, error);
-    }
-  };
-
-  return { setValue, getValue, removeValue };
+  return { setValue, getValue };
 };

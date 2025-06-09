@@ -22,6 +22,8 @@ type CharacterContextType = {
   deleteCharacter: (id: string) => void;
 };
 
+const LOCAL_STORAGE_KEY = "characters" as const;
+
 export const CharacterContext = createContext<CharacterContextType | undefined>(
   undefined
 );
@@ -29,7 +31,7 @@ export const CharacterContext = createContext<CharacterContextType | undefined>(
 export const CharacterProvider = ({ children }: CharacterProps) => {
   const [characters, setCharacters] = useState<Character[]>([]);
 
-  const { getValue, setValue, removeValue } = useLocalStorage("characters");
+  const { getValue, setValue } = useLocalStorage(LOCAL_STORAGE_KEY);
 
   useEffect(() => {
     const storedCharacters = getValue();
@@ -45,12 +47,14 @@ export const CharacterProvider = ({ children }: CharacterProps) => {
       notes: data.notes,
       coreAbilities: buildCoreAbilities(data),
     };
-    setCharacters((prevCharacters) => [...prevCharacters, newCharacter]);
-    setValue([...characters, newCharacter]);
+    setCharacters((prevCharacters) => {
+      const updatedCharacters = [...prevCharacters, newCharacter];
+      setValue(updatedCharacters);
+      return updatedCharacters;
+    });
   };
 
   const editCharacter = (id: string, data: FormFields) => {
-    removeValue();
     const updatedCharacters = characters.map((character) => {
       if (character.id === id) {
         return {
@@ -67,7 +71,6 @@ export const CharacterProvider = ({ children }: CharacterProps) => {
   };
 
   const deleteCharacter = (id: string) => {
-    removeValue();
     const updatedCharacters = characters.filter(
       (character) => character.id !== id
     );
