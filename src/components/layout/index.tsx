@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 
 import { logo } from "../../icons";
 import { AppRoute } from "../../settings";
@@ -15,6 +15,30 @@ const Layout: React.FC = () => {
       <header className="layout-header">
         <div className="content">
           {pathname === "/" ? logo : <Link to={AppRoute.Root}>{logo}</Link>}
+          <nav>
+            <ul className="nav-list">
+              <li>
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? "active" : "inactive"
+                  }
+                  to={AppRoute.Characters}
+                >
+                  Characters
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? "active" : "inactive"
+                  }
+                  to={AppRoute.NewCharacter}
+                >
+                  Add Character
+                </NavLink>
+              </li>
+            </ul>
+          </nav>
         </div>
       </header>
       <main className="layout-main">
