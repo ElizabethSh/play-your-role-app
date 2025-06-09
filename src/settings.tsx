@@ -3,7 +3,7 @@ export enum AppRoute {
   Characters = "/characters",
   Character = "/characters/:id",
   EditCharacter = "/characters/:id/edit",
-  NewCharacter = "/characters/new",
+  NewCharacter = "/new-character",
   NotFound = "*",
 }
 
