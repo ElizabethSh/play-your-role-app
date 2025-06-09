@@ -14,13 +14,19 @@ const Layout: React.FC = () => {
     <div className="layout">
       <header className="layout-header">
         <div className="content">
-          {pathname === "/" ? logo : <Link to={AppRoute.Root}>{logo}</Link>}
+          {pathname === AppRoute.Root ? (
+            logo
+          ) : (
+            <Link className="link-logo" to={AppRoute.Root}>
+              {logo}
+            </Link>
+          )}
           <nav>
             <ul className="nav-list">
               <li>
                 <NavLink
                   className={({ isActive }) =>
-                    isActive ? "active" : "inactive"
+                    isActive ? "nav-link-active" : "nav-link-inactive"
                   }
                   to={AppRoute.Characters}
                 >
@@ -30,7 +36,7 @@ const Layout: React.FC = () => {
               <li>
                 <NavLink
                   className={({ isActive }) =>
-                    isActive ? "active" : "inactive"
+                    isActive ? "nav-link-active" : "nav-link-inactive"
                   }
                   to={AppRoute.NewCharacter}
                 >

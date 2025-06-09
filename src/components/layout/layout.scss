@@ -17,6 +17,11 @@
       justify-content: start;
     }
 
+    .link-logo:hover,
+    .link-logo:focus {
+      opacity: 0.8;
+    }
+
     .nav-list {
       margin: 0;
       padding: 0;
@@ -31,7 +36,7 @@
         text-decoration: none;
       }
 
-      a.inactive {
+      a.nav-link-inactive {
         color: var(--text-color-secondary);
 
         &:hover,
@@ -40,7 +45,7 @@
         }
       }
 
-      a.active {
+      a.nav-link-active {
         color: var(--color-link-active);
         border-bottom: 2px solid var(--color-link-hover);
       }
