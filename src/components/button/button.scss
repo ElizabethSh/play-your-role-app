@@ -14,13 +14,13 @@
 }
 
 .button-confirm {
-  border: 2px solid var(--submit-text-color);
-  color: var(--submit-text-color);
+  border: 2px solid var(--text-color-submit);
+  color: var(--text-color-submit);
   justify-self: center;
 
   &:hover,
   &:focus {
-    background-color: var(--submit-text-color);
+    background-color: var(--text-color-submit);
     color: var(--text-color-secondary);
   }
 
