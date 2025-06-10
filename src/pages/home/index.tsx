@@ -11,12 +11,15 @@ const HomePage: React.FC = () => (
     <h1 className="main-title">Start new adventure!</h1>
     <div className="home-buttons">
       <Link
-        className="link-as-button button-primary"
+        className="link-as-button link-as-button-primary"
         to={AppRoute.NewCharacter}
       >
         Create new character
       </Link>
-      <Link className="link-as-button button-primary" to={AppRoute.Characters}>
+      <Link
+        className="link-as-button link-as-button-primary"
+        to={AppRoute.Characters}
+      >
         View characters
       </Link>
     </div>

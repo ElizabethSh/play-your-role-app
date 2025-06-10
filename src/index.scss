@@ -22,6 +22,8 @@
   --input-border-color-hover: var(--blue-300);
   --loader-color: var(--red-100);
 
+  --backdrop-color: rgba(0, 0, 0, 0.75);
+
   --color-link-hover: var(--blue-300);
   --color-link-active: var(--blue-500);
 
@@ -65,7 +67,7 @@ code {
   }
 }
 
-.button-primary {
+.link-as-button-primary {
   border: 2px solid var(--text-color-secondary);
   color: var(--text-color-secondary);
 
@@ -76,7 +78,7 @@ code {
   }
 }
 
-.button-secondary {
+.link-as-button-secondary {
   border-radius: 0.25rem;
   border: 2px solid var(--color-button-secondary);
   color: var(--color-button-secondary);
@@ -157,5 +159,19 @@ code {
   &:focus {
     border: 2px solid var(--input-border-color-hover);
     outline: none;
+  }
+}
+
+@mixin custom-scrollbar {
+  &::-webkit-scrollbar {
+    background-color: transparent;
+    border-radius: 0.625rem;
+    transition: all 0.3s;
+    width: 0.5rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--color-scrollbar-thumb);
+    border-radius: 0.625rem;
   }
 }
