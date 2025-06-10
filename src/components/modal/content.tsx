@@ -5,7 +5,7 @@ import Button from "../button";
 import "./content.scss";
 
 type ConfirmationModalContentProps = {
-  onCancelClick: (id?: string) => void;
+  onCancelClick: () => void;
   onDeleteClick: () => void;
 };
 
@@ -19,9 +19,9 @@ const ConfirmationModalContent: React.FC<ConfirmationModalContentProps> = ({
       <p className="modal-description">You can&#39;t undo this action.</p>
       <div className="modal-actions">
         <Button
-          label="cancel"
-          variant="primary"
+          label="Cancel"
           onClick={() => onCancelClick()}
+          variant="primary"
         />
         <Button label="Delete" variant="danger" onClick={onDeleteClick} />
       </div>

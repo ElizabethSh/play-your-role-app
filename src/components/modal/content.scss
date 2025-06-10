@@ -1,0 +1,43 @@
+@import "../../index.scss";
+
+.modal-content {
+  display: grid;
+  gap: 1.5rem;
+  grid-template: "title" min-content "content" 5rem "actions" min-content;
+
+  @media (width <= 767px) {
+    width: 100%;
+  }
+}
+
+.modal-title {
+  color: var(--background-color-info);
+  font-size: 2.25rem;
+  font-weight: 600;
+  grid-area: title;
+  margin: 0;
+  text-align: center;
+  word-break: break-word;
+
+  @media (width <= 767px) {
+    font-size: 1.5rem;
+  }
+}
+
+.modal-description {
+  @include custom-scrollbar;
+  color: var(--text-color-primary);
+  font-size: 1.25rem;
+  font-weight: 500;
+  grid-area: content;
+  margin: 0;
+  overflow-y: auto;
+  text-align: center;
+}
+
+.modal-actions {
+  grid-area: actions;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
