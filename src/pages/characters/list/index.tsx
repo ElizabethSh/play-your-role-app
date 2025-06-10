@@ -13,7 +13,7 @@ import "./characters.scss";
 const CharactersPage: React.FC = () => {
   const { characters, deleteCharacter } = useCharacters();
 
-  const { dialogRef, openModal, closeDialog } = useModal();
+  const { dialogRef, openModal, closeModal } = useModal();
 
   const handleDelete = () => {
     if (!dialogRef.current) return;
@@ -22,15 +22,15 @@ const CharactersPage: React.FC = () => {
 
     if (characterId) {
       deleteCharacter(characterId);
-      closeDialog();
+      closeModal();
     }
   };
 
   return (
     <>
-      <Modal dialogRef={dialogRef}>
+      <Modal dialogRef={dialogRef} ariaLabel="Delete character confirmation">
         <ConfirmationModalContent
-          onCancelClick={closeDialog}
+          onCancelClick={closeModal}
           onDeleteClick={handleDelete}
         />
       </Modal>

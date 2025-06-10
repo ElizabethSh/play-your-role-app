@@ -10,7 +10,7 @@ export const useModal = () => {
     }
   };
 
-  const closeDialog = () => {
+  const closeModal = () => {
     if (dialogRef?.current?.open) {
       dialogRef.current.close();
     }
@@ -19,6 +19,6 @@ export const useModal = () => {
   return {
     dialogRef,
     openModal,
-    closeDialog,
+    closeModal,
   };
 };
