@@ -15,6 +15,10 @@
       flex-direction: row;
       gap: 4rem;
       justify-content: start;
+
+      @media (width < 768px) {
+        gap: 2rem;
+      }
     }
 
     .link-logo:hover,
@@ -23,13 +27,18 @@
     }
 
     .nav-list {
+      display: flex;
+      font-size: 1.2rem;
+      font-weight: 600;
+      gap: 2rem;
+      list-style: none;
       margin: 0;
       padding: 0;
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-      font-weight: 600;
-      font-size: 1.2rem;
+
+      @media (width < 768px) {
+        gap: 1rem;
+        font-size: 1rem;
+      }
 
       a {
         padding: 0.5rem 1rem;
