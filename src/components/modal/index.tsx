@@ -3,13 +3,14 @@ import React from "react";
 import "./modal.scss";
 
 type ModalProps = {
-  dialogRef: React.RefObject<HTMLDialogElement | null>;
+  ariaLabel?: string;
   children: React.ReactNode;
+  dialogRef: React.RefObject<HTMLDialogElement | null>;
 };
 
-const Modal: React.FC<ModalProps> = ({ children, dialogRef }) => {
+const Modal: React.FC<ModalProps> = ({ children, dialogRef, ariaLabel }) => {
   return (
-    <dialog className="modal" ref={dialogRef}>
+    <dialog aria-label={ariaLabel} className="modal" ref={dialogRef}>
       {children}
     </dialog>
   );
