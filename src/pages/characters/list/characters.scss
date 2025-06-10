@@ -1,16 +1,24 @@
-.characters-list {
-  padding: 0;
-}
+.characters {
+  .link-as-button-secondary {
+    display: flex;
+    justify-self: center;
+  }
 
-.characters-empty-list {
-  align-items: center;
-  display: flex;
-  font-size: 2rem;
-  justify-content: center;
-  margin-top: 20rem;
-}
+  .characters-list {
+    padding: 0;
+  }
 
-.characters .link-as-button-secondary {
-  display: flex;
-  justify-self: center;
+  .characters-empty-list {
+    align-items: center;
+    color: var(--text-color-primary);
+    display: flex;
+    font-size: 2rem;
+    justify-content: center;
+    margin: 20rem 0 3rem;
+
+    @media (width < 768px) {
+      font-size: 1.25rem;
+      margin: 3rem 0;
+    }
+  }
 }
