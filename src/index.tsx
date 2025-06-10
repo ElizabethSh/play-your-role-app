@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 
 import App from "./components/app/App";
+import ToastNotifications from "./components/toast-notifications";
 import { CharacterProvider } from "./context/character";
 import reportWebVitals from "./reportWebVitals";
 
@@ -16,6 +17,7 @@ root.render(
     <BrowserRouter>
       <CharacterProvider>
         <App />
+        <ToastNotifications />
       </CharacterProvider>
     </BrowserRouter>
   </React.StrictMode>
