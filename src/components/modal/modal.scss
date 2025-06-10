@@ -1,0 +1,24 @@
+.modal {
+  border-radius: 0.5rem;
+  box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.1);
+  border-style: none;
+  background-color: var(--background-color-secondary);
+  width: 37rem;
+  min-height: 18rem;
+  padding: 1.75rem;
+
+  &::backdrop {
+    background: var(--backdrop-color);
+  }
+
+  @media (width <= 767px) {
+    &[open] {
+      display: grid;
+      height: 100%;
+      max-width: 100vw;
+      min-height: 100vh;
+      place-content: center;
+      margin: 0;
+    }
+  }
+}
