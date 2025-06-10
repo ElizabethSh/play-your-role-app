@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import CharactersList from "../../../components/list";
 import Modal from "../../../components/modal";
-import ConfirmationModalContent from "../../../components/modal/modal-content";
+import ConfirmationModalContent from "../../../components/modal/content";
 import { useCharacters } from "../../../context/character";
 import { AppRoute } from "../../../settings";
 
@@ -56,7 +56,7 @@ const CharactersPage: React.FC = () => {
               You have not created any characters yet
             </p>
             <Link
-              className="link-as-button button-secondary"
+              className="link-as-button link-as-button-secondary"
               to={AppRoute.NewCharacter}
             >
               Create new character
