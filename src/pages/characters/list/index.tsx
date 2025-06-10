@@ -1,10 +1,11 @@
-import React, { useRef } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 import CharactersList from "../../../components/list";
 import Modal from "../../../components/modal";
 import ConfirmationModalContent from "../../../components/modal/content";
 import { useCharacters } from "../../../context/character";
+import { useModal } from "../../../hooks/use-modal";
 import { AppRoute } from "../../../settings";
 
 import "./characters.scss";
@@ -12,7 +13,7 @@ import "./characters.scss";
 const CharactersPage: React.FC = () => {
   const { characters, deleteCharacter } = useCharacters();
 
-  const dialogRef = useRef<HTMLDialogElement>(null);
+  const { dialogRef, openModal, closeDialog } = useModal();
 
   const handleDelete = () => {
     if (!dialogRef.current) return;
@@ -22,19 +23,6 @@ const CharactersPage: React.FC = () => {
     if (characterId) {
       deleteCharacter(characterId);
       closeDialog();
-    }
-  };
-
-  const openModal = (id: string) => {
-    if (dialogRef?.current && !dialogRef.current.open) {
-      dialogRef.current.dataset.characterId = id;
-      dialogRef.current.showModal();
-    }
-  };
-
-  const closeDialog = () => {
-    if (dialogRef?.current?.open) {
-      dialogRef.current.close();
     }
   };
 
