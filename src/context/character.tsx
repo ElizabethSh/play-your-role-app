@@ -49,7 +49,7 @@ export const CharacterProvider = ({ children }: CharacterProps) => {
     };
     setCharacters((prevCharacters) => {
       const updatedCharacters = [...prevCharacters, newCharacter];
-      setValue(updatedCharacters);
+      setValue(updatedCharacters, "add");
       return updatedCharacters;
     });
   };
@@ -67,7 +67,7 @@ export const CharacterProvider = ({ children }: CharacterProps) => {
       return character;
     });
     setCharacters(updatedCharacters);
-    setValue(updatedCharacters);
+    setValue(updatedCharacters, "edit");
   };
 
   const deleteCharacter = (id: string) => {
@@ -75,7 +75,7 @@ export const CharacterProvider = ({ children }: CharacterProps) => {
       (character) => character.id !== id
     );
     setCharacters(updatedCharacters);
-    setValue(updatedCharacters);
+    setValue(updatedCharacters, "delete");
   };
 
   const state = {

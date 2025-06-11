@@ -2,7 +2,7 @@ import React, { useEffect, useMemo } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 import { useCharacters } from "../../../context/character";
-import { arrow_left, avatar } from "../../../icons";
+import { arrowLeft, avatar } from "../../../icons";
 import { AppRoute, CORE_ABILITIES } from "../../../settings";
 
 import "./item.scss";
@@ -26,7 +26,7 @@ const CharacterDetailsPage: React.FC = () => {
     <section className="main-content character">
       <div className="character-header">
         <Link className="character-back-link" to={AppRoute.Characters}>
-          {arrow_left}
+          {arrowLeft}
           Back to characters
         </Link>
         {avatar}
