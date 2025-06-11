@@ -18,7 +18,7 @@ const ToastNotification: React.FC<ToastNotificationProps> = ({
   const { title, description } = notification;
 
   return (
-    <div className={`toast toast-${title}`} key={description}>
+    <div className={`toast toast-${title}`} key={notification.id}>
       {title === "error" ? circlePlus : circleCheck}
       <h6 className="toast-title">{title}</h6>
       <p className="toast-text">{description}</p>
