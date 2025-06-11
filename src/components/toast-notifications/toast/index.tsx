@@ -1,28 +1,31 @@
 import React from "react";
 
+import { Notification, useNotifications } from "../../../context/notifications";
 import { circleCheck, circlePlus, closingCross } from "../../../icons";
 
 import "./toast.scss";
 
 type ToastNotificationProps = {
-  errorDescription: string;
-  title: string;
-  variant: "error" | "success";
+  notification: Notification;
+  index: number;
 };
 
 const ToastNotification: React.FC<ToastNotificationProps> = ({
-  errorDescription,
-  title,
-  variant,
+  notification,
+  index,
 }) => {
+  const { closeNotification } = useNotifications();
+  const { title, description } = notification;
+
   return (
-    <div className={`toast toast-${variant}`} key={errorDescription}>
-      {variant === "error" ? circlePlus : circleCheck}
+    <div className={`toast toast-${title}`} key={description}>
+      {title === "error" ? circlePlus : circleCheck}
       <h6 className="toast-title">{title}</h6>
-      <p className="toast-text">{errorDescription}</p>
+      <p className="toast-text">{description}</p>
       <button
+        aria-label="Close notification"
         className="toast-close-button"
-        // onClick={() => closeErrorToast(index)}
+        onClick={() => closeNotification(index)}
         type="button"
       >
         {closingCross}
