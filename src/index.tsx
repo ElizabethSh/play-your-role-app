@@ -5,6 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./components/app/App";
 import ToastNotifications from "./components/toast-notifications";
 import { CharacterProvider } from "./context/character";
+import { NotificationsProvider } from "./context/notifications";
 import reportWebVitals from "./reportWebVitals";
 
 import "./index.scss";
@@ -15,10 +16,12 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <CharacterProvider>
-        <App />
+      <NotificationsProvider>
+        <CharacterProvider>
+          <App />
+        </CharacterProvider>
         <ToastNotifications />
-      </CharacterProvider>
+      </NotificationsProvider>
     </BrowserRouter>
   </React.StrictMode>
 );
