@@ -1,23 +1,13 @@
-import { useState } from "react";
+import React from "react";
 
-import { circlePlus, closingCross } from "../../icons";
+import { useNotifications } from "../../context/notifications";
 
 import ToastNotification from "./toast";
 
 import "./toast-notifications.scss";
 
-type Error = {
-  errorDescription: string;
-  title: "error" | "success";
-  variant?: "error" | "success";
-};
-
 const ToastNotifications: React.FC = () => {
-  const [isHovered, setIsHovered] = useState(false);
-  const errors: Error[] = [
-    { title: "error", errorDescription: "This is an error description." },
-    { title: "success", errorDescription: "This is a success description." },
-  ];
+  const { notifications, setIsHovered } = useNotifications();
 
   return (
     <div
@@ -25,12 +15,11 @@ const ToastNotifications: React.FC = () => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {errors.map(({ title, errorDescription }) => (
+      {(notifications || []).map((notification, index) => (
         <ToastNotification
-          errorDescription={errorDescription}
-          key={errorDescription}
-          title={title}
-          variant={title}
+          key={notification.id}
+          index={index}
+          notification={notification}
         />
       ))}
     </div>
