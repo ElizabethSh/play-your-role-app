@@ -18,7 +18,7 @@
   --background-color-secondary: var(--white);
   --color-button-secondary: var(--blue-200);
   --color-scrollbar-thumb: var(--gray-100);
-  --home-page-header-color: var(--red-100);
+  --main-header-color: var(--red-100);
   --input-border-color-hover: var(--blue-300);
   --loader-color: var(--red-100);
 
@@ -92,7 +92,7 @@ code {
 }
 
 .main-title {
-  color: var(--home-page-header-color);
+  color: var(--main-header-color);
   font-size: 4.5rem;
   font-weight: 600;
   margin: 0;

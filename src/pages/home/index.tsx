@@ -8,7 +8,8 @@ import "./home.scss";
 
 const HomePage: React.FC = () => (
   <div className="home">
-    <h1 className="main-title">Start new adventure!</h1>
+    <h1 className="app-title">Play your role!</h1>
+    <p className="home-description">Start new adventure!</p>
     <div className="home-buttons">
       <Link
         className="link-as-button link-as-button-primary"
