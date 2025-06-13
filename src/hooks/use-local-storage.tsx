@@ -9,13 +9,6 @@ export const useLocalStorage = (key: string) => {
       const item = window.localStorage.getItem(key);
       return item ? JSON.parse(item) : undefined;
     } catch (error) {
-      addNotification({
-        id: crypto.randomUUID(),
-        title: "error",
-        description: `Error retrieving localStorage key "${key}": ${
-          error instanceof Error ? error.message : String(error)
-        }`,
-      });
       return undefined;
     }
   };
