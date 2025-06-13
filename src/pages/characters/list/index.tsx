@@ -11,8 +11,7 @@ import { AppRoute } from "../../../settings";
 import "./characters.scss";
 
 const CharactersPage: React.FC = () => {
-  const { characters, deleteCharacter } = useCharacters();
-
+  const { characters, deleteCharacter, isLoadingError } = useCharacters();
   const { dialogRef, openModal, closeModal } = useModal();
 
   const handleDelete = () => {
@@ -26,6 +25,43 @@ const CharactersPage: React.FC = () => {
     }
   };
 
+  const getCharactersList = () => {
+    if (characters.length > 0) {
+      return <CharactersList openDialog={openModal} />;
+    }
+
+    return (
+      <>
+        <p className="characters-empty-list">
+          You have not created any characters yet
+        </p>
+        <Link
+          className="link-as-button link-as-button-secondary"
+          to={AppRoute.NewCharacter}
+        >
+          Create new character
+        </Link>
+      </>
+    );
+  };
+
+  let content;
+  if (isLoadingError) {
+    content = (
+      <div className="characters-error">
+        <p>Error retriving data from Local Storage</p>
+        <p>Please refresh the page</p>
+      </div>
+    );
+  } else {
+    content = (
+      <>
+        <h1 className="main-title">Your characters</h1>
+        {getCharactersList()}
+      </>
+    );
+  }
+
   return (
     <>
       <Modal dialogRef={dialogRef} ariaLabel="Delete character confirmation">
@@ -34,24 +70,7 @@ const CharactersPage: React.FC = () => {
           onDeleteClick={handleDelete}
         />
       </Modal>
-      <section className="characters main-content">
-        <h1 className="main-title">Your characters</h1>
-        {characters.length ? (
-          <CharactersList openDialog={openModal} />
-        ) : (
-          <>
-            <p className="characters-empty-list">
-              You have not created any characters yet
-            </p>
-            <Link
-              className="link-as-button link-as-button-secondary"
-              to={AppRoute.NewCharacter}
-            >
-              Create new character
-            </Link>
-          </>
-        )}
-      </section>
+      <section className="characters main-content">{content}</section>
     </>
   );
 };
