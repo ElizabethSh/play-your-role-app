@@ -5,7 +5,7 @@ import { circleCheck, circlePlus, closingCross } from "../../../icons";
 
 import "./toast.scss";
 
-type ToastNotificationProps = {
+export type ToastNotificationProps = {
   notification: Notification;
   index: number;
 };
@@ -18,7 +18,7 @@ const ToastNotification: React.FC<ToastNotificationProps> = ({
   const { title, description } = notification;
 
   return (
-    <div className={`toast toast-${title}`}>
+    <div className={`toast toast-${title}`} role="status">
       {title === "error" ? circlePlus : circleCheck}
       <h6 className="toast-title">{title}</h6>
       <p className="toast-text">{description}</p>
