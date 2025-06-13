@@ -49,7 +49,7 @@ const CharactersPage: React.FC = () => {
   if (isLoadingError) {
     content = (
       <div className="characters-error">
-        <p>Error retriving data from Local Storage</p>
+        <p>Error retrieving data from Local Storage</p>
         <p>Please refresh the page</p>
       </div>
     );
