@@ -1,9 +1,9 @@
 export const arrowLeft = (
   <svg
-    width="1em"
+    fill="none"
     height="1em"
     viewBox="0 0 25 24"
-    fill="none"
+    width="1em"
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
@@ -41,6 +41,31 @@ export const avatar = (
     />
     <path
       d="M12.5 11C14.7091 11 16.5 9.20914 16.5 7C16.5 4.79086 14.7091 3 12.5 3C10.2909 3 8.5 4.79086 8.5 7C8.5 9.20914 10.2909 11 12.5 11Z"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+export const edit = (
+  <svg
+    fill="none"
+    height="1em"
+    viewBox="0 0 25 24"
+    width="1em"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M11.5 4H4.5C3.96957 4 3.46086 4.21071 3.08579 4.58579C2.71071 4.96086 2.5 5.46957 2.5 6V20C2.5 20.5304 2.71071 21.0391 3.08579 21.4142C3.46086 21.7893 3.96957 22 4.5 22H18.5C19.0304 22 19.5391 21.7893 19.9142 21.4142C20.2893 21.0391 20.5 20.5304 20.5 20V13"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M19 2.49998C19.3978 2.10216 19.9374 1.87866 20.5 1.87866C21.0626 1.87866 21.6022 2.10216 22 2.49998C22.3978 2.89781 22.6213 3.43737 22.6213 3.99998C22.6213 4.56259 22.3978 5.10216 22 5.49998L12.5 15L8.5 16L9.5 12L19 2.49998Z"
       stroke="currentColor"
       strokeWidth="2"
       strokeLinecap="round"

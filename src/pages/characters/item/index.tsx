@@ -2,7 +2,11 @@ import React, { useEffect, useMemo } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 import { useCharacters } from "../../../context/character";
-import { arrowLeft, avatar } from "../../../icons";
+import {
+  arrowLeft as arrowLeftIcon,
+  avatar,
+  edit as editIcon,
+} from "../../../icons";
 import { AppRoute, CORE_ABILITIES } from "../../../settings";
 
 import "./item.scss";
@@ -26,8 +30,15 @@ const CharacterDetailsPage: React.FC = () => {
     <section className="main-content character">
       <div className="character-header">
         <Link className="character-back-link" to={AppRoute.Characters}>
-          {arrowLeft}
-          Back to characters
+          {arrowLeftIcon}
+          <span className="link-title">Back to characters</span>
+        </Link>
+        <Link
+          className="character-edit-link"
+          to={AppRoute.Characters + `/${id}/edit`}
+        >
+          {editIcon}
+          <span className="link-title">Edit character</span>
         </Link>
         {avatar}
         <h1 className="main-title character-name">{character?.name}</h1>
