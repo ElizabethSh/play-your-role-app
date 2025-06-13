@@ -5,7 +5,7 @@
 
   .new-character-form {
     display: grid;
-    gap: 5rem;
+    gap: 4rem;
     grid-template-rows: repeat(4, min-content);
 
     @media (width < 768px) {
