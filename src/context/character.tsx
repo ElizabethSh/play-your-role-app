@@ -16,10 +16,11 @@ type CharacterProps = {
 };
 
 type CharacterContextType = {
-  characters: Character[];
   addNewCharacter: (data: FormFields) => void;
-  editCharacter: (id: string, data: FormFields) => void;
+  characters: Character[];
   deleteCharacter: (id: string) => void;
+  editCharacter: (id: string, data: FormFields) => void;
+  isLoadingError: boolean;
 };
 
 const LOCAL_STORAGE_KEY = "characters" as const;
@@ -30,13 +31,17 @@ export const CharacterContext = createContext<CharacterContextType | undefined>(
 
 export const CharacterProvider = ({ children }: CharacterProps) => {
   const [characters, setCharacters] = useState<Character[]>([]);
+  const [isLoadingError, setIsLoadingError] = useState(false);
 
   const { getValue, setValue } = useLocalStorage(LOCAL_STORAGE_KEY);
 
   useEffect(() => {
     const storedCharacters = getValue();
+
     if (storedCharacters) {
       setCharacters(storedCharacters);
+    } else {
+      setIsLoadingError(true);
     }
   }, []);
 
@@ -79,10 +84,11 @@ export const CharacterProvider = ({ children }: CharacterProps) => {
   };
 
   const state = {
-    characters,
     addNewCharacter,
-    editCharacter,
+    characters,
     deleteCharacter,
+    editCharacter,
+    isLoadingError,
   };
 
   return (
