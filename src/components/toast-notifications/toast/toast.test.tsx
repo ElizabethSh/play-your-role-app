@@ -58,7 +58,7 @@ describe("Toast Notification", () => {
       notification: {
         title: "success",
         id: "3",
-        description: "This is an success message",
+        description: "This is a success message",
       },
       index: 2,
     };
