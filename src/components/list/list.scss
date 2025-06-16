@@ -58,15 +58,15 @@
     padding-left: 1rem;
     padding-right: 1rem;
   }
-}
 
-.avatar {
-  border-radius: 50%;
-  border: 2px solid var(--color-button-secondary);
-  grid-area: logo;
-  height: 3rem;
-  padding: 0.5rem;
-  width: 3rem;
+  .avatar {
+    border-radius: 50%;
+    border: 2px solid var(--color-button-secondary);
+    grid-area: logo;
+    height: 3rem;
+    padding: 0.5rem;
+    width: 3rem;
+  }
 }
 
 .character-name {
