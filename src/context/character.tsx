@@ -16,10 +16,14 @@ type CharacterProps = {
 };
 
 type CharacterContextType = {
-  addNewCharacter: (data: FormFields) => void;
+  addNewCharacter: (data: FormFields, avatar?: string | undefined) => void;
   characters: Character[];
   deleteCharacter: (id: string) => void;
-  editCharacter: (id: string, data: FormFields) => void;
+  editCharacter: (
+    id: string,
+    data: FormFields,
+    avatar?: string | undefined
+  ) => void;
   isLoadingError: boolean;
 };
 
@@ -45,13 +49,15 @@ export const CharacterProvider = ({ children }: CharacterProps) => {
     }
   }, []);
 
-  const addNewCharacter = (data: FormFields) => {
+  const addNewCharacter = (data: FormFields, avatar?: string) => {
     const newCharacter: Character = {
+      avatar: avatar || "",
+      coreAbilities: buildCoreAbilities(data),
       id: crypto.randomUUID(),
       name: data.name,
       notes: data.notes,
-      coreAbilities: buildCoreAbilities(data),
     };
+
     setCharacters((prevCharacters) => {
       const updatedCharacters = [...prevCharacters, newCharacter];
       setValue(updatedCharacters, "add");
@@ -59,13 +65,14 @@ export const CharacterProvider = ({ children }: CharacterProps) => {
     });
   };
 
-  const editCharacter = (id: string, data: FormFields) => {
+  const editCharacter = (id: string, data: FormFields, avatar?: string) => {
     const updatedCharacters = characters.map((character) => {
       if (character.id === id) {
         return {
           ...character,
           name: data.name,
           notes: data.notes,
+          avatar: avatar || data.image,
           coreAbilities: buildCoreAbilities(data),
         };
       }
