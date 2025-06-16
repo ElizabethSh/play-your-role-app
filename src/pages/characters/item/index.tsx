@@ -1,12 +1,9 @@
 import React, { useEffect, useMemo } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
+import Avatar from "../../../components/avatar";
 import { useCharacters } from "../../../context/character";
-import {
-  arrowLeft as arrowLeftIcon,
-  avatar,
-  edit as editIcon,
-} from "../../../icons";
+import { arrowLeft as arrowLeftIcon, edit as editIcon } from "../../../icons";
 import { AppRoute, CORE_ABILITIES } from "../../../settings";
 
 import "./item.scss";
@@ -40,7 +37,7 @@ const CharacterDetailsPage: React.FC = () => {
           {editIcon}
           <span className="link-title">Edit character</span>
         </Link>
-        {avatar}
+        <Avatar image={character?.avatar} characterName={character?.name} />
         <h1 className="main-title character-name">{character?.name}</h1>
       </div>
       <h3 className="character-title">Core abilities</h3>
