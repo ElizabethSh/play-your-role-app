@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useId } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 
+import AvatarPicker from "../../../components/avatar/picker";
 import Button from "../../../components/button";
 import { useCharacters } from "../../../context/character";
 import { AppRoute, CORE_ABILITIES } from "../../../settings";
@@ -25,12 +26,17 @@ export type FormFields = {
   intelligence: number | "";
   wisdom: number | "";
   charisma: number | "";
+  image?: string;
 };
 
 const CharacterForm: React.FC = () => {
+  const [selectedAvatar, setSelectedAvatar] = React.useState<
+    string | undefined
+  >(undefined);
   const { addNewCharacter, editCharacter, characters } = useCharacters();
   const navigate = useNavigate();
   const param = useParams();
+  const id = useId();
 
   let title = "Add new character";
   let character: Character | undefined = undefined;
@@ -51,6 +57,7 @@ const CharacterForm: React.FC = () => {
     defaultValues: {
       name: character?.name || "",
       notes: character?.notes || "",
+      image: character?.avatar || "",
       strength: character?.coreAbilities.strength.score || "",
       dexterity: character?.coreAbilities.dexterity.score || "",
       constitution: character?.coreAbilities.constitution.score || "",
@@ -66,9 +73,9 @@ const CharacterForm: React.FC = () => {
 
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
     if (param.id && character) {
-      editCharacter(character.id, data);
+      editCharacter(character.id, data, selectedAvatar);
     } else {
-      addNewCharacter(data);
+      addNewCharacter(data, selectedAvatar);
     }
     navigate(AppRoute.Characters);
   };
@@ -99,6 +106,10 @@ const CharacterForm: React.FC = () => {
             type="text"
           />
           {!!errors.name && <p className="error-message">{nameError}</p>}
+          <AvatarPicker
+            onSelect={setSelectedAvatar}
+            selectedAvatar={selectedAvatar}
+          />
         </fieldset>
         <fieldset className="new-character-form-fieldset abilities">
           <legend className="new-character-form-legend">Core abilities</legend>
@@ -108,13 +119,13 @@ const CharacterForm: React.FC = () => {
                 <label
                   className="ability-label label required"
                   key={ability}
-                  htmlFor={ability}
+                  htmlFor={id + ability}
                 >
                   {ability}
                 </label>
                 <input
                   className="ability-input input"
-                  id={ability}
+                  id={id + ability}
                   max="20"
                   min="1"
                   placeholder="00"
