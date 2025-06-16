@@ -2,25 +2,24 @@ import React from "react";
 
 import { avatar as avatarIcon } from "../../icons";
 
+import "./avatar.scss";
+
 type AvatarProps = {
   image?: string;
   characterName?: string;
 };
 
 const Avatar: React.FC<AvatarProps> = ({ image, characterName }) => {
-  console.log("image", image);
-
-  console.log("Avatar component rendered with image:", image);
-
   let avatar;
   if (!image) {
     avatar = avatarIcon;
   } else {
     avatar = (
       <img
+        alt={`${characterName} avatar`}
         className="character-avatar"
         src={image}
-        alt={`${characterName} avatar`}
+        width="200"
       />
     );
   }

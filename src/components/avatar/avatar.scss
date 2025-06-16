@@ -1,0 +1,28 @@
+.avatar {
+  border-radius: 50%;
+  border: 3px solid var(--text-color-primary);
+  grid-area: avatar;
+  justify-self: center;
+  padding: 1rem;
+
+  @media (width < 768px) {
+    height: 5rem;
+    width: 5rem;
+  }
+  @media (width >= 768px) {
+    height: 10rem;
+    width: 10rem;
+  }
+
+  path {
+    stroke: var(--text-color-primary);
+  }
+}
+
+.character-avatar {
+  width: 10rem;
+
+  @media (width < 768px) {
+    width: 5rem;
+  }
+}
