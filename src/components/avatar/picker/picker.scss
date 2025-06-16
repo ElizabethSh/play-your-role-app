@@ -1,0 +1,37 @@
+.avatar-picker-description {
+  font-size: 1rem;
+  color: var(--text-color-primary);
+  margin: 0.5rem 0;
+}
+
+.avatar-picker-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  width: 100%;
+
+  @media (width < 768px) {
+    flex-wrap: wrap;
+    width: calc(100vw - 2rem);
+    overflow-x: auto;
+  }
+
+  .avatar-button {
+    padding: 0.25rem;
+    display: flex;
+    place-content: center;
+    border: 2px solid transparent;
+    border-radius: 0.5rem;
+    width: 7.5rem;
+
+    &:hover,
+    &:focus {
+      border: 2px solid var(--input-border-color-hover);
+      opacity: 0.8;
+    }
+
+    &.selected {
+      border: 2px solid var(--text-color-primary);
+    }
+  }
+}
