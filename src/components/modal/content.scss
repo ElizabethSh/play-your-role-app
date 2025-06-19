@@ -1,4 +1,4 @@
-@import "../../index.scss";
+@use "../../index.scss";
 
 .modal-content {
   display: grid;
@@ -25,7 +25,7 @@
 }
 
 .modal-description {
-  @include custom-scrollbar;
+  @include index.custom-scrollbar;
   color: var(--text-color-primary);
   font-size: 1.25rem;
   font-weight: 500;

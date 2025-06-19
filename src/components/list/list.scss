@@ -1,11 +1,11 @@
-@import "../../index.scss";
+@use "../../index.scss";
 
 .characters-list {
   --gap: 4rem;
   --margins: 4rem;
   --title-height: 4.5rem;
 
-  @include custom-scrollbar;
+  @include index.custom-scrollbar;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
