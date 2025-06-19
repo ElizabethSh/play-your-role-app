@@ -17,4 +17,4 @@ npm start
 - TypeScript
 - HTML
 - SCSS
-- Jest, React Testing Library
+- Vitest, React Testing Library
