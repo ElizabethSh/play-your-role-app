@@ -63,7 +63,7 @@ const CharacterForm: React.FC = () => {
     },
   });
 
-  if (!character) {
+  if (!character && param.id) {
     return <NotFoundPage />;
   }
 
