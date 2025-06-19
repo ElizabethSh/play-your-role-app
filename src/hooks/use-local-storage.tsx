@@ -8,7 +8,7 @@ export const useLocalStorage = (key: string) => {
     try {
       const item = window.localStorage.getItem(key);
       return item ? JSON.parse(item) : undefined;
-    } catch (error) {
+    } catch {
       return undefined;
     }
   };
@@ -24,7 +24,7 @@ export const useLocalStorage = (key: string) => {
         title: "success",
         description: SUCCESS_NOTIFICATIONS[action],
       });
-    } catch (error) {
+    } catch {
       addNotification({
         id: crypto.randomUUID(),
         title: "error",

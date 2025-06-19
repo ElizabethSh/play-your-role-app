@@ -42,10 +42,6 @@ const CharacterForm: React.FC = () => {
   let character: Character | undefined = undefined;
   if (param.id) {
     character = characters.find((character) => character.id === param.id);
-
-    if (!character) {
-      return <NotFoundPage />;
-    }
     title = "Edit character";
   }
 
@@ -66,6 +62,10 @@ const CharacterForm: React.FC = () => {
       charisma: character?.coreAbilities.charisma.score || "",
     },
   });
+
+  if (!character) {
+    return <NotFoundPage />;
+  }
 
   const nameError = errors?.name?.type
     ? validationErrors[errors?.name?.type as keyof typeof validationErrors]
