@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useCharacters } from "@context/character";
+
 import { avatar } from "icons";
 import { AppRoute } from "settings";
 

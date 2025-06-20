@@ -5,6 +5,7 @@ import AvatarPicker from "@components/avatar/picker";
 import Button from "@components/button";
 import { useCharacters } from "@context/character";
 import NotFoundPage from "@pages/not-found";
+
 import { AppRoute, CORE_ABILITIES } from "settings";
 import { Character } from "types/character";
 

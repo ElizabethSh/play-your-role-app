@@ -2,6 +2,7 @@ import React, { useEffect, useMemo } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Avatar from "@components/avatar";
 import { useCharacters } from "@context/character";
+
 import { arrowLeft as arrowLeftIcon, edit as editIcon } from "icons";
 import { AppRoute, CORE_ABILITIES } from "settings";
 

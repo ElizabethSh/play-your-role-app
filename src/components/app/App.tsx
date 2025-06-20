@@ -2,6 +2,7 @@ import React, { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import Layout from "@components/layout";
 import Loader from "@components/loader";
+
 import { AppRoute } from "settings";
 
 const NotFoundPage = React.lazy(() => import("@pages/not-found"));
