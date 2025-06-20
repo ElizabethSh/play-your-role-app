@@ -1,12 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
-import CharactersList from "../../../components/list";
-import Modal from "../../../components/modal";
-import ConfirmationModalContent from "../../../components/modal/content";
-import { useCharacters } from "../../../context/character";
-import { useModal } from "../../../hooks/use-modal";
-import { AppRoute } from "../../../settings";
+import CharactersList from "@components/list";
+import Modal from "@components/modal";
+import ConfirmationModalContent from "@components/modal/content";
+import { useCharacters } from "@context/character";
+import { useModal } from "@hooks/use-modal";
+import { AppRoute } from "settings";
 
 import "./characters.scss";
 

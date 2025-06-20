@@ -1,19 +1,14 @@
 import React, { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
+import Layout from "@components/layout";
+import Loader from "@components/loader";
+import { AppRoute } from "settings";
 
-import { AppRoute } from "../../settings";
-import Layout from "../layout";
-import Loader from "../loader";
-
-const NotFoundPage = React.lazy(() => import("../../pages/not-found"));
-const HomePage = React.lazy(() => import("../../pages/home"));
-const CharactersPage = React.lazy(() => import("../../pages/characters/list"));
-const CharacterDetailsPage = React.lazy(
-  () => import("../../pages/characters/item")
-);
-const CharacterFormPage = React.lazy(
-  () => import("../../pages/characters/form")
-);
+const NotFoundPage = React.lazy(() => import("@pages/not-found"));
+const HomePage = React.lazy(() => import("@pages/home"));
+const CharactersPage = React.lazy(() => import("@pages/characters/list"));
+const CharacterDetailsPage = React.lazy(() => import("@pages/characters/item"));
+const CharacterFormPage = React.lazy(() => import("@pages/characters/form"));
 
 const App = () => {
   return (

@@ -1,4 +1,4 @@
-import { FormFields } from "./pages/characters/form";
+import { FormFields } from "@pages/characters/form";
 
 export const buildCoreAbilities = (data: FormFields) => {
   return {
