@@ -5,11 +5,11 @@ import {
   useEffect,
   useState,
 } from "react";
+import { useLocalStorage } from "@hooks/use-local-storage";
+import { FormFields } from "@pages/characters/form";
 
-import { useLocalStorage } from "../hooks/use-local-storage";
-import { FormFields } from "../pages/characters/form";
-import { Character } from "../types/character";
-import { buildCoreAbilities } from "../utils";
+import { Character } from "types/character";
+import { buildCoreAbilities } from "utils";
 
 type CharacterProps = {
   children: ReactNode;

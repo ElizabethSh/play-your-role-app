@@ -1,7 +1,7 @@
 import React from "react";
+import { Notification, useNotifications } from "@context/notifications";
 
-import { Notification, useNotifications } from "../../../context/notifications";
-import { circleCheck, circlePlus, closingCross } from "../../../icons";
+import { circleCheck, circlePlus, closingCross } from "icons";
 
 import "./toast.scss";
 

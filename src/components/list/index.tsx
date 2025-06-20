@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useCharacters } from "@context/character";
 
-import { useCharacters } from "../../context/character";
-import { avatar } from "../../icons";
-import { AppRoute } from "../../settings";
+import { avatar } from "icons";
+import { AppRoute } from "settings";
 
 import "./list.scss";
 

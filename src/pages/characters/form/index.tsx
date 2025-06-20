@@ -1,16 +1,16 @@
 import React, { useId } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
+import AvatarPicker from "@components/avatar/picker";
+import Button from "@components/button";
+import { useCharacters } from "@context/character";
+import NotFoundPage from "@pages/not-found";
 
-import AvatarPicker from "../../../components/avatar/picker";
-import Button from "../../../components/button";
-import { useCharacters } from "../../../context/character";
-import { AppRoute, CORE_ABILITIES } from "../../../settings";
-import { Character } from "../../../types/character";
-import NotFoundPage from "../../not-found";
+import { AppRoute, CORE_ABILITIES } from "settings";
+import { Character } from "types/character";
 
-import "./form.scss";
 import "../../../index.scss";
+import "./form.scss";
 
 const validationErrors = {
   required: "This field is required",

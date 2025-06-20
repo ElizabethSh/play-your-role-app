@@ -1,6 +1,5 @@
 import React from "react";
-
-import Button from "../button";
+import Button from "@components/button";
 
 import "./content.scss";
 
