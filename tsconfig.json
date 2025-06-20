@@ -24,10 +24,9 @@
       "@hooks/*": ["hooks/*"],
       "@pages/*": ["pages/*"],
       "@settings": ["settings.ts"],
-      "@styles/*": ["index.scss"],
       "types/*": ["types/*"],
-      "@utils/*": ["utils.ts"]
-      // add more aliases here
+      "@utils/*": ["utils.ts"],
+      "@icons": ["icons.ts"]
     },
     "outDir": "./dist"
   },
