@@ -23,10 +23,10 @@
       "@context/*": ["context/*"],
       "@hooks/*": ["hooks/*"],
       "@pages/*": ["pages/*"],
-      "icons": ["icons.ts"],
-      "settings": ["settings.ts"],
-      "types/*": ["types/*"],
-      "utils/*": ["utils.ts"]
+      "@settings": ["settings.ts"],
+      "@utils*": ["utils.ts"],
+      "@icons": ["icons.ts"],
+      "types/*": ["types/*"]
     },
     "outDir": "./dist"
   },
