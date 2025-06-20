@@ -1,5 +1,5 @@
 import React from "react";
-import { avatar as avatarIcon } from "@icons";
+import { avatar as avatarIcon } from "icons";
 
 import "./avatar.scss";
 
