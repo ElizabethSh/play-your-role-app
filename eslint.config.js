@@ -4,27 +4,45 @@ import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 import tseslint from "typescript-eslint";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
+import jsxA11y from "eslint-plugin-jsx-a11y";
+import reactApp from "eslint-config-react-app";
 
 export default tseslint.config(
   { ignores: ["dist"] },
   {
-    extends: [js.configs.recommended, ...tseslint.configs.recommended],
+    extends: [
+      js.configs.recommended,
+      ...tseslint.configs.recommended,
+      reactApp,
+    ],
     files: ["**/*.{ts,tsx}"],
     languageOptions: {
-      ecmaVersion: 2020,
+      ecmaVersion: 2024,
       globals: globals.browser,
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+        sourceType: "module",
+      },
     },
     plugins: {
+      "jsx-a11y": jsxA11y,
       "react-hooks": reactHooks,
       "react-refresh": reactRefresh,
       "simple-import-sort": simpleImportSort,
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
+      ...jsxA11y.configs.recommended.rules,
+      // Custom ESLint rules:
+      "no-console": "warn",
+      "no-debugger": "error",
       "react-refresh/only-export-components": [
         "warn",
         { allowConstantExport: true },
       ],
+      "@typescript-eslint/no-explicit-any": "warn",
       "simple-import-sort/imports": [
         "error",
         {
@@ -48,6 +66,7 @@ export default tseslint.config(
           ],
         },
       ],
+      "simple-import-sort/exports": "error",
     },
   }
 );
