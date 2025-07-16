@@ -6,25 +6,25 @@ import {
   useMemo,
   useState,
 } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 const CLEAR_MESSAGE_TIMEOUT = 2000;
 
 type NotificationsProps = {
   children: React.ReactNode;
 };
+export type Notification = {
+  description: string;
+  id?: string;
+  title: "error" | "success";
+};
 
 type NotificationsContextType = {
   notifications: Notification[];
   addNotification: (notification: Notification) => void;
   removeNotification: (id: string) => void;
-  closeNotification: (index: number) => void;
+  closeNotification: (id: string) => void;
   setIsHovered: (isHovered: boolean) => void;
-};
-
-export type Notification = {
-  description: string;
-  id?: string;
-  title: "error" | "success";
 };
 
 export const NotificationsContext = createContext<
@@ -42,7 +42,7 @@ export const NotificationsProvider = ({ children }: NotificationsProps) => {
   }, []);
 
   useEffect(() => {
-    let timeoutID: ReturnType<typeof setTimeout>;
+    let timeoutID: ReturnType<typeof setTimeout> | null = null;
 
     if (!isHovered && notifications.length) {
       timeoutID = setTimeout(() => {
@@ -55,23 +55,22 @@ export const NotificationsProvider = ({ children }: NotificationsProps) => {
     }
 
     return () => {
-      clearTimeout(timeoutID);
+      if (timeoutID) {
+        clearTimeout(timeoutID);
+      }
     };
   }, [notifications, isHovered, removeNotification]);
 
-  const closeNotification = useCallback(
-    (index: number): void => {
-      const notificationsCopy = notifications.slice();
-      notificationsCopy.splice(index, 1);
-      setNotifications(notificationsCopy);
-    },
-    [notifications]
-  );
+  const closeNotification = useCallback((id: string): void => {
+    setNotifications((prev) =>
+      prev.filter((notification) => notification.id !== id)
+    );
+  }, []);
 
   const addNotification = useCallback((notification: Notification) => {
     setNotifications((prev) => [
       ...prev,
-      { ...notification, id: notification.id || crypto.randomUUID() },
+      { ...notification, id: notification.id || uuidv4() },
     ]);
   }, []);
 

@@ -15,12 +15,8 @@ const ToastNotifications: React.FC = () => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {(notifications || []).map((notification, index) => (
-        <ToastNotification
-          key={notification.id}
-          index={index}
-          notification={notification}
-        />
+      {notifications.map((notification) => (
+        <ToastNotification key={notification.id} notification={notification} />
       ))}
     </div>
   );
