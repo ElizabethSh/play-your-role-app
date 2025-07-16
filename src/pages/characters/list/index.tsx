@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
 import CharactersList from "@components/list";
 import Modal from "@components/modal";
 import ConfirmationModalContent from "@components/modal/content";

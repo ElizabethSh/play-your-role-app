@@ -1,9 +1,9 @@
 import React, { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
+
 import Layout from "@components/layout";
 import Loader from "@components/loader";
-
-import { AppRoute } from "settings";
+import { AppRoute } from "@settings";
 
 const NotFoundPage = React.lazy(() => import("@pages/not-found"));
 const HomePage = React.lazy(() => import("@pages/home"));

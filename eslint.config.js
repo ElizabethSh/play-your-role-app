@@ -43,7 +43,9 @@ export default tseslint.config(
         {
           groups: [
             // Packages. `react` related packages come first.
-            ["^react", "^@?\\w"],
+            ["^react"],
+            // External packages.
+            ["^@?\\w"],
             // Internal packages.
             [
               "^(components|pages|utils|hooks|config|vendored-lib|icons|settings|types)(/.*|$)",

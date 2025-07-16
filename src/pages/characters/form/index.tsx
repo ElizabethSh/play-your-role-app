@@ -1,6 +1,7 @@
 import React, { useId } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
+
 import AvatarPicker from "@components/avatar/picker";
 import Button from "@components/button";
 import { useCharacters } from "@context/character";
@@ -144,9 +145,12 @@ const CharacterForm: React.FC = () => {
         </fieldset>
         <fieldset className="new-character-form-fieldset notes">
           <legend className="new-character-form-legend">Notes</legend>
-          <label className="label">Tell us about character</label>
+          <label className="label" htmlFor="notes">
+            Tell us about character
+          </label>
           <textarea
             className="textarea"
+            id="notes"
             rows={3}
             {...register("notes", { required: false })}
           />

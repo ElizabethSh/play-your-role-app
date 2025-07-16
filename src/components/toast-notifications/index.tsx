@@ -1,4 +1,5 @@
 import React from "react";
+
 import { useNotifications } from "@context/notifications";
 
 import ToastNotification from "./toast";

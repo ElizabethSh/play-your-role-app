@@ -1,4 +1,5 @@
 import React from "react";
+
 import { Notification, useNotifications } from "@context/notifications";
 
 import { circleCheck, circlePlus, closingCross } from "icons";
