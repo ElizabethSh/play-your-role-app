@@ -14,7 +14,6 @@ describe("Toast Notification", () => {
         id: "1",
         description: "This is a success message",
       },
-      index: 0,
     };
     render(
       <NotificationsProvider>
@@ -37,7 +36,6 @@ describe("Toast Notification", () => {
         id: "2",
         description: "This is an error message",
       },
-      index: 1,
     };
     render(
       <NotificationsProvider>
@@ -60,7 +58,6 @@ describe("Toast Notification", () => {
         id: "3",
         description: "This is a success message",
       },
-      index: 2,
     };
     render(
       <NotificationsProvider>
