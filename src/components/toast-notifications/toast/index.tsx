@@ -8,15 +8,13 @@ import "./toast.scss";
 
 export type ToastNotificationProps = {
   notification: Notification;
-  index: number;
 };
 
 const ToastNotification: React.FC<ToastNotificationProps> = ({
   notification,
-  index,
 }) => {
   const { closeNotification } = useNotifications();
-  const { title, description } = notification;
+  const { title, description, id } = notification;
 
   return (
     <div className={`toast toast-${title}`} role="status">
@@ -26,7 +24,7 @@ const ToastNotification: React.FC<ToastNotificationProps> = ({
       <button
         aria-label="Close notification"
         className="toast-close-button"
-        onClick={() => closeNotification(index)}
+        onClick={() => id && closeNotification(id)}
         type="button"
       >
         {closingCross}

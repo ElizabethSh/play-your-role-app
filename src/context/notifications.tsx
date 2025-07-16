@@ -23,7 +23,7 @@ type NotificationsContextType = {
   notifications: Notification[];
   addNotification: (notification: Notification) => void;
   removeNotification: (id: string) => void;
-  closeNotification: (index: number) => void;
+  closeNotification: (id: string) => void;
   setIsHovered: (isHovered: boolean) => void;
 };
 
@@ -61,14 +61,11 @@ export const NotificationsProvider = ({ children }: NotificationsProps) => {
     };
   }, [notifications, isHovered, removeNotification]);
 
-  const closeNotification = useCallback(
-    (index: number): void => {
-      const notificationsCopy = notifications.slice();
-      notificationsCopy.splice(index, 1);
-      setNotifications(notificationsCopy);
-    },
-    [notifications]
-  );
+  const closeNotification = useCallback((id: string): void => {
+    setNotifications((prev) =>
+      prev.filter((notification) => notification.id !== id)
+    );
+  }, []);
 
   const addNotification = useCallback((notification: Notification) => {
     setNotifications((prev) => [
