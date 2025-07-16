@@ -1,5 +1,6 @@
 import React, { Suspense } from "react";
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
+
 import Loader from "@components/loader";
 
 import { logo } from "icons";

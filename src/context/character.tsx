@@ -5,6 +5,7 @@ import {
   useEffect,
   useState,
 } from "react";
+
 import { useLocalStorage } from "@hooks/use-local-storage";
 import { FormFields } from "@pages/characters/form";
 

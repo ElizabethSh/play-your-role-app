@@ -1,4 +1,11 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 
 const CLEAR_MESSAGE_TIMEOUT = 2000;
 
@@ -16,7 +23,7 @@ type NotificationsContextType = {
 
 export type Notification = {
   description: string;
-  id: string;
+  id?: string;
   title: "error" | "success";
 };
 
@@ -28,6 +35,12 @@ export const NotificationsProvider = ({ children }: NotificationsProps) => {
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [isHovered, setIsHovered] = useState(false);
 
+  const removeNotification = useCallback((id: string) => {
+    setNotifications((prev) =>
+      prev.filter((notification) => notification.id !== id)
+    );
+  }, []);
+
   useEffect(() => {
     let timeoutID: ReturnType<typeof setTimeout>;
 
@@ -35,7 +48,7 @@ export const NotificationsProvider = ({ children }: NotificationsProps) => {
       timeoutID = setTimeout(() => {
         const notificationsCopy = notifications.slice();
         const removedNotification = notificationsCopy.shift();
-        if (removedNotification) {
+        if (removedNotification?.id) {
           removeNotification(removedNotification.id);
         }
       }, CLEAR_MESSAGE_TIMEOUT);
@@ -44,35 +57,44 @@ export const NotificationsProvider = ({ children }: NotificationsProps) => {
     return () => {
       clearTimeout(timeoutID);
     };
-  }, [notifications, isHovered]);
+  }, [notifications, isHovered, removeNotification]);
 
-  const closeNotification = (index: number): void => {
-    const notificationsCopy = notifications.slice();
-    notificationsCopy.splice(index, 1);
+  const closeNotification = useCallback(
+    (index: number): void => {
+      const notificationsCopy = notifications.slice();
+      notificationsCopy.splice(index, 1);
+      setNotifications(notificationsCopy);
+    },
+    [notifications]
+  );
 
-    setNotifications(notificationsCopy);
-  };
+  const addNotification = useCallback((notification: Notification) => {
+    setNotifications((prev) => [
+      ...prev,
+      { ...notification, id: notification.id || crypto.randomUUID() },
+    ]);
+  }, []);
 
-  const addNotification = (notification: Notification) => {
-    setNotifications((prev) => [...prev, notification]);
-  };
-
-  const removeNotification = (id: string) => {
-    setNotifications((prev) =>
-      prev.filter((notification) => notification.id !== id)
-    );
-  };
+  // Memoize the context value to optimize performance
+  const contextValue = useMemo(
+    () => ({
+      notifications,
+      addNotification,
+      removeNotification,
+      closeNotification,
+      setIsHovered,
+    }),
+    [
+      notifications,
+      addNotification,
+      removeNotification,
+      closeNotification,
+      setIsHovered,
+    ]
+  );
 
   return (
-    <NotificationsContext.Provider
-      value={{
-        notifications,
-        addNotification,
-        removeNotification,
-        closeNotification,
-        setIsHovered,
-      }}
-    >
+    <NotificationsContext.Provider value={contextValue}>
       {children}
     </NotificationsContext.Provider>
   );

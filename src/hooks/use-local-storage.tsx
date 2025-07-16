@@ -1,33 +1,32 @@
 import { useNotifications } from "@context/notifications";
+import { ERROR_NOTIFICATIONS, SUCCESS_NOTIFICATIONS } from "@settings";
 
-import { ERROR_NOTIFICATIONS, SUCCESS_NOTIFICATIONS } from "settings";
+import { Character } from "types/character";
 
 export const useLocalStorage = (key: string) => {
   const { addNotification } = useNotifications();
 
-  const getValue = () => {
+  const getValue = (): Character[] | undefined => {
     try {
       const item = window.localStorage.getItem(key);
-      return item ? JSON.parse(item) : undefined;
+      return item ? JSON.parse(item) : [];
     } catch {
       return undefined;
     }
   };
 
   const setValue = (
-    value: unknown,
+    value: Character[],
     action: keyof typeof SUCCESS_NOTIFICATIONS
-  ) => {
+  ): void => {
     try {
       window.localStorage.setItem(key, JSON.stringify(value));
       addNotification({
-        id: crypto.randomUUID(),
         title: "success",
         description: SUCCESS_NOTIFICATIONS[action],
       });
     } catch {
       addNotification({
-        id: crypto.randomUUID(),
         title: "error",
         description: ERROR_NOTIFICATIONS[action],
       });
