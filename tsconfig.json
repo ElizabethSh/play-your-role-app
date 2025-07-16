@@ -24,7 +24,7 @@
       "@pages/*": ["pages/*"],
       "@settings": ["settings.ts"],
       "@utils": ["utils.ts"],
-      "@icons": ["icons.ts"],
+      "@icons": ["icons.tsx"],
       "@types/*": ["types/*"]
     }
   },
