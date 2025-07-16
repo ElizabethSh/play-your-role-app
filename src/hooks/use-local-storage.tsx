@@ -1,6 +1,8 @@
 import { useNotifications } from "@context/notifications";
 import { ERROR_NOTIFICATIONS, SUCCESS_NOTIFICATIONS } from "@settings";
 
+import { Character } from "types/character";
+
 export const useLocalStorage = (key: string) => {
   const { addNotification } = useNotifications();
 
