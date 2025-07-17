@@ -26,6 +26,7 @@
   align-items: center;
   border-bottom: 1px solid var(--color-button-secondary);
   display: grid;
+  gap: 0.5rem;
   grid-template: "link options" / 1fr min-content;
   list-style-type: none;
 
@@ -49,7 +50,7 @@
   display: grid;
   gap: 1rem;
   grid-area: link;
-  grid-template: "logo name ability" / min-content 1fr 1fr;
+  grid-template: "logo name ability" / min-content 1fr min-content;
   padding: 0.5rem;
   text-decoration: none;
   width: 100%;
@@ -57,7 +58,6 @@
   @media (width <= 767px) {
     padding-left: 1rem;
     padding-right: 1rem;
-    grid-template: "logo name ability" / min-content 1fr 1fr;
   }
 
   .avatar {
