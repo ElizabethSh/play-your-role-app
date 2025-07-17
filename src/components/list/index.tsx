@@ -27,18 +27,20 @@ const CharactersList: React.FC<CharactersListProps> = ({ openDialog }) => {
           >
             {avatar}
             <h3 className="character-name">{character.name}</h3>
-            <div className="character-abilities">
+            <ul className="character-abilities">
               {CORE_ABILITIES.map((ability) => {
                 return (
-                  <div key={ability} className="character-ability">
+                  <li key={ability} className="character-ability">
                     <span className="ability-score">
                       {character.coreAbilities[ability].score}
                     </span>
-                    <span className="ability-name">{ability.slice(0, 3)}</span>
-                  </div>
+                    <span className="ability-name" aria-label={ability}>
+                      {ability.slice(0, 3)}
+                    </span>
+                  </li>
                 );
               })}
-            </div>
+            </ul>
           </Link>
           <CharacterOptionsMenu
             characterId={character.id}
