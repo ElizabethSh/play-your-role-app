@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useCharacters } from "@context/character";
 
 import { avatar } from "icons";
-import { AppRoute } from "settings";
+import { AppRoute, CORE_ABILITIES } from "settings";
 
 import CharacterOptionsMenu from "./CharacterOptionsMenu";
 
@@ -27,7 +27,18 @@ const CharactersList: React.FC<CharactersListProps> = ({ openDialog }) => {
           >
             {avatar}
             <h3 className="character-name">{character.name}</h3>
-            <p>Abilities</p>
+            <div className="character-abilities">
+              {CORE_ABILITIES.map((ability) => {
+                return (
+                  <div key={ability} className="character-ability">
+                    <span className="ability-score">
+                      {character.coreAbilities[ability].score}
+                    </span>
+                    <span className="ability-name">{ability.slice(0, 3)}</span>
+                  </div>
+                );
+              })}
+            </div>
           </Link>
           <CharacterOptionsMenu
             characterId={character.id}
