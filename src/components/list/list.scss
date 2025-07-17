@@ -71,6 +71,9 @@
 
   .character-abilities {
     grid-template-columns: repeat(6, min-content);
+    gap: 0.5rem;
+    display: grid;
+    padding: 0;
 
     @media (width <= 480px) {
       display: none;
