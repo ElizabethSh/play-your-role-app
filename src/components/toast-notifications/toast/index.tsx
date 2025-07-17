@@ -1,8 +1,9 @@
 import React from "react";
 
 import { Notification, useNotifications } from "@context/notifications";
+import CloseIcon from "@mui/icons-material/Close";
 
-import { circleCheck, circlePlus, closingCross } from "icons";
+import { circleCheck, circlePlus } from "icons";
 
 import "./toast.scss";
 
@@ -27,7 +28,7 @@ const ToastNotification: React.FC<ToastNotificationProps> = ({
         onClick={() => id && closeNotification(id)}
         type="button"
       >
-        {closingCross}
+        <CloseIcon fontSize="small" />
       </button>
     </div>
   );
