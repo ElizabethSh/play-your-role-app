@@ -9,10 +9,13 @@ import { useModal } from "@hooks/use-modal";
 
 import { AppRoute } from "settings";
 
+import CharactersSkeleton from "./CharactersSkeleton";
+
 import "./characters.scss";
 
 const CharactersPage: React.FC = () => {
-  const { characters, deleteCharacter, isLoadingError } = useCharacters();
+  const { characters, deleteCharacter, isLoadingError, isLoading } =
+    useCharacters();
   const { dialogRef, openModal, closeModal } = useModal();
 
   const handleDelete = () => {
@@ -47,7 +50,14 @@ const CharactersPage: React.FC = () => {
   };
 
   let content;
-  if (isLoadingError) {
+  if (isLoading) {
+    content = (
+      <>
+        <h1 className="main-title">Your characters</h1>
+        <CharactersSkeleton />
+      </>
+    );
+  } else if (isLoadingError) {
     content = (
       <div className="characters-error">
         <p>Error retrieving data from Local Storage</p>

@@ -29,6 +29,7 @@ type CharacterContextType = {
     avatar?: string
   ) => Promise<void>;
   isLoadingError: boolean;
+  isLoading: boolean;
 };
 
 const INDEXEDDB_KEY = "characters" as const;
@@ -40,10 +41,12 @@ export const CharacterContext = createContext<CharacterContextType | undefined>(
 export const CharacterProvider = ({ children }: CharacterProps) => {
   const [characters, setCharacters] = useState<Character[]>([]);
   const [isLoadingError, setIsLoadingError] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const { getValue, setValue } = useIndexedDB(INDEXEDDB_KEY);
 
   useEffect(() => {
+    setIsLoading(true);
     (async () => {
       const storedCharacters = await getValue();
       if (storedCharacters) {
@@ -51,6 +54,7 @@ export const CharacterProvider = ({ children }: CharacterProps) => {
       } else {
         setIsLoadingError(true);
       }
+      setIsLoading(false);
     })();
   }, [getValue]);
 
@@ -109,6 +113,7 @@ export const CharacterProvider = ({ children }: CharacterProps) => {
       deleteCharacter,
       editCharacter,
       isLoadingError,
+      isLoading,
     }),
     [
       addNewCharacter,
@@ -116,6 +121,7 @@ export const CharacterProvider = ({ children }: CharacterProps) => {
       deleteCharacter,
       editCharacter,
       isLoadingError,
+      isLoading,
     ]
   );
 
