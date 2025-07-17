@@ -6,6 +6,8 @@ import { useCharacters } from "@context/character";
 import { avatar } from "icons";
 import { AppRoute } from "settings";
 
+import CharacterOptionsMenu from "./CharacterOptionsMenu";
+
 import "./list.scss";
 
 type CharactersListProps = {
@@ -27,27 +29,10 @@ const CharactersList: React.FC<CharactersListProps> = ({ openDialog }) => {
             <h3 className="character-name">{character.name}</h3>
             <p>Abilities</p>
           </Link>
-          <div className="options">
-            <Link
-              className="link-as-button option"
-              to={`${AppRoute.Characters}/${character.id}`}
-            >
-              View
-            </Link>
-            <Link
-              className="link-as-button option"
-              to={`${AppRoute.Characters}/${character.id}/edit`}
-            >
-              Edit
-            </Link>
-            <button
-              className="option danger"
-              type="button"
-              onClick={() => openDialog(character.id)}
-            >
-              Delete
-            </button>
-          </div>
+          <CharacterOptionsMenu
+            characterId={character.id}
+            openDialog={openDialog}
+          />
         </li>
       ))}
     </ul>
