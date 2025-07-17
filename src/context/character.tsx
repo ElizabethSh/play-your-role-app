@@ -1,37 +1,37 @@
 import {
   createContext,
   ReactNode,
+  useCallback,
   useContext,
   useEffect,
-  useState,
   useMemo,
-  useCallback,
+  useState,
 } from "react";
 
-import { useLocalStorage } from "@hooks/use-local-storage";
+import { useIndexedDB } from "@hooks/use-indexed-db";
 import { FormFields } from "@pages/characters/form";
+import { v4 as uuidv4 } from "uuid";
 
 import { Character } from "types/character";
 import { buildCoreAbilities } from "utils";
-import { v4 as uuidv4 } from "uuid";
 
 type CharacterProps = {
   children: ReactNode;
 };
 
 type CharacterContextType = {
-  addNewCharacter: (data: FormFields, avatar?: string | undefined) => void;
+  addNewCharacter: (data: FormFields, avatar?: string) => Promise<void>;
   characters: Character[];
-  deleteCharacter: (id: string) => void;
+  deleteCharacter: (id: string) => Promise<void>;
   editCharacter: (
     id: string,
     data: FormFields,
-    avatar?: string | undefined
-  ) => void;
+    avatar?: string
+  ) => Promise<void>;
   isLoadingError: boolean;
 };
 
-const LOCAL_STORAGE_KEY = "characters" as const;
+const INDEXEDDB_KEY = "characters" as const;
 
 export const CharacterContext = createContext<CharacterContextType | undefined>(
   undefined
@@ -41,20 +41,21 @@ export const CharacterProvider = ({ children }: CharacterProps) => {
   const [characters, setCharacters] = useState<Character[]>([]);
   const [isLoadingError, setIsLoadingError] = useState(false);
 
-  const { getValue, setValue } = useLocalStorage(LOCAL_STORAGE_KEY);
+  const { getValue, setValue } = useIndexedDB(INDEXEDDB_KEY);
 
   useEffect(() => {
-    const storedCharacters = getValue();
-
-    if (storedCharacters) {
-      setCharacters(storedCharacters);
-    } else {
-      setIsLoadingError(true);
-    }
-  }, []);
+    (async () => {
+      const storedCharacters = await getValue();
+      if (storedCharacters) {
+        setCharacters(storedCharacters);
+      } else {
+        setIsLoadingError(true);
+      }
+    })();
+  }, [getValue]);
 
   const addNewCharacter = useCallback(
-    (data: FormFields, avatar?: string) => {
+    async (data: FormFields, avatar?: string) => {
       const newCharacter: Character = {
         avatar: avatar || "",
         coreAbilities: buildCoreAbilities(data),
@@ -65,13 +66,13 @@ export const CharacterProvider = ({ children }: CharacterProps) => {
 
       const updatedCharacters = [...characters, newCharacter];
       setCharacters(updatedCharacters);
-      setValue(updatedCharacters, "add");
+      await setValue(updatedCharacters, "add");
     },
     [characters, setValue]
   );
 
   const editCharacter = useCallback(
-    (id: string, data: FormFields, avatar?: string) => {
+    async (id: string, data: FormFields, avatar?: string) => {
       const updatedCharacters = characters.map((character) => {
         if (character.id === id) {
           return {
@@ -85,18 +86,18 @@ export const CharacterProvider = ({ children }: CharacterProps) => {
         return character;
       });
       setCharacters(updatedCharacters);
-      setValue(updatedCharacters, "edit");
+      await setValue(updatedCharacters, "edit");
     },
     [characters, setValue]
   );
 
   const deleteCharacter = useCallback(
-    (id: string) => {
+    async (id: string) => {
       const updatedCharacters = characters.filter(
         (character) => character.id !== id
       );
       setCharacters(updatedCharacters);
-      setValue(updatedCharacters, "delete");
+      await setValue(updatedCharacters, "delete");
     },
     [characters, setValue]
   );
