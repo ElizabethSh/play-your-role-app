@@ -3,7 +3,8 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 
 import Avatar from "@components/avatar";
 import { useCharacters } from "@context/character";
-import { arrowLeft as arrowLeftIcon, edit as editIcon } from "@icons";
+import { arrowLeft as arrowLeftIcon } from "@icons";
+import EditIcon from "@mui/icons-material/Edit";
 import { AppRoute, CORE_ABILITIES } from "@settings";
 
 import "./item.scss";
@@ -34,7 +35,7 @@ const CharacterDetailsPage: React.FC = () => {
           className="character-edit-link"
           to={AppRoute.Characters + `/${id}/edit`}
         >
-          {editIcon}
+          <EditIcon />
           <span className="link-title">Edit character</span>
         </Link>
         <Avatar image={character?.avatar} characterName={character?.name} />

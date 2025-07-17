@@ -18,18 +18,6 @@
     width: 100vw;
   }
 
-  .toast-close-button {
-    background-color: transparent;
-    border: none;
-    box-shadow: none;
-    grid-area: close;
-    min-width: 2rem;
-
-    svg path {
-      stroke: var(--gray-100);
-    }
-  }
-
   .toast-title {
     font-size: 1rem;
     font-weight: 600;
@@ -45,6 +33,23 @@
     grid-area: text;
     margin: 0;
     width: 100%;
+  }
+
+  .toast-close-button {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    grid-area: close;
+    cursor: pointer;
+
+    svg path {
+      stroke: var(--gray-100);
+
+      &:hover,
+      &:focus {
+        stroke: var(--gray-200);
+      }
+    }
   }
 
   .circle-plus,
