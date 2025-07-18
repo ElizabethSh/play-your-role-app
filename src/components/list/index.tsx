@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import Avatar from "@components/avatar";
 import { useCharacters } from "@context/character";
 
-import { avatar } from "icons";
 import { AppRoute, CORE_ABILITIES } from "settings";
 
 import CharacterOptionsMenu from "./CharacterOptionsMenu";
@@ -25,7 +25,11 @@ const CharactersList: React.FC<CharactersListProps> = ({ openDialog }) => {
             to={`${AppRoute.Characters}/${character.id}`}
             className="character-link"
           >
-            {avatar}
+            <Avatar
+              image={character.avatar}
+              name={character.name}
+              size="small"
+            />
             <h3 className="character-name">{character.name}</h3>
             <ul className="character-abilities">
               {CORE_ABILITIES.map((ability) => {

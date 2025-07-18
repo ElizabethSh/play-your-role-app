@@ -1,5 +1,5 @@
-import React, { useEffect, useMemo } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import React, { useMemo } from "react";
+import { Link, Navigate, useParams } from "react-router-dom";
 
 import Avatar from "@components/avatar";
 import { useCharacters } from "@context/character";
@@ -11,18 +11,15 @@ import "./item.scss";
 
 const CharacterDetailsPage: React.FC = () => {
   const { id } = useParams();
-  const navigate = useNavigate();
   const { characters } = useCharacters();
 
   const character = useMemo(() => {
     return characters.find((character) => character.id === id);
   }, [id, characters]);
 
-  useEffect(() => {
-    if (!character) {
-      navigate(AppRoute.NotFound);
-    }
-  }, [character, navigate]);
+  if (!character) {
+    return <Navigate to={AppRoute.NotFound} />;
+  }
 
   return (
     <section className="main-content character">
@@ -38,8 +35,8 @@ const CharacterDetailsPage: React.FC = () => {
           <EditIcon />
           <span className="link-title">Edit character</span>
         </Link>
-        <Avatar image={character?.avatar} characterName={character?.name} />
-        <h1 className="main-title character-name">{character?.name}</h1>
+        <Avatar size="large" image={character.avatar} name={character.name} />
+        <h1 className="main-title character-name">{character.name}</h1>
       </div>
       <h3 className="character-title">Core abilities</h3>
       <ul className="character-abilities">
@@ -47,10 +44,10 @@ const CharacterDetailsPage: React.FC = () => {
           <li className="ability" key={ability}>
             <h6 className="ability-name">{ability}</h6>
             <p className="ability-value">
-              {character?.coreAbilities[ability].score}
+              {character.coreAbilities[ability].score}
             </p>
             <p className="ability-modifier">
-              {character?.coreAbilities[ability].modifier}
+              {character.coreAbilities[ability].modifier}
             </p>
           </li>
         ))}
