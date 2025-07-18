@@ -11,7 +11,7 @@
   .character-header {
     align-items: center;
     display: grid;
-    gap: 3rem 5rem;
+    gap: 3rem 2rem;
     grid-template-areas:
       "back edit"
       "avatar title";
@@ -20,6 +20,10 @@
     @media (width < 768px) {
       gap: 2rem 0.5rem;
       grid-template-columns: 7rem 1fr;
+    }
+
+    .avatar {
+      justify-self: center;
     }
 
     .character-back-link,
@@ -38,7 +42,7 @@
 
       @media (width < 768px) {
         font-size: 1rem;
-        gap: 0.5rem;
+        gap: 0.25rem;
         grid-template-columns: 1.5rem 1fr;
         width: 100px;
       }
