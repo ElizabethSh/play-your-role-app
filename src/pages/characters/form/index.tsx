@@ -1,4 +1,4 @@
-import React, { useId } from "react";
+import React, { useEffect, useId } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -46,24 +46,33 @@ const CharacterForm: React.FC = () => {
     title = "Edit character";
   }
 
+  useEffect(() => {
+    if (character && character.avatar) {
+      setSelectedAvatar(character.avatar);
+    }
+  }, [character]);
+
+  const defaultFormValues: FormFields = {
+    name: character?.name || "",
+    notes: character?.notes || "",
+    image: undefined,
+    strength: character?.coreAbilities.strength.score || "",
+    dexterity: character?.coreAbilities.dexterity.score || "",
+    constitution: character?.coreAbilities.constitution.score || "",
+    intelligence: character?.coreAbilities.intelligence.score || "",
+    wisdom: character?.coreAbilities.wisdom.score || "",
+    charisma: character?.coreAbilities.charisma.score || "",
+  };
+
   const {
     register,
     handleSubmit,
+    reset,
     setError,
     clearErrors,
     formState: { errors, isSubmitting },
   } = useForm<FormFields>({
-    defaultValues: {
-      name: character?.name || "",
-      notes: character?.notes || "",
-      image: character?.avatar || "",
-      strength: character?.coreAbilities.strength.score || "",
-      dexterity: character?.coreAbilities.dexterity.score || "",
-      constitution: character?.coreAbilities.constitution.score || "",
-      intelligence: character?.coreAbilities.intelligence.score || "",
-      wisdom: character?.coreAbilities.wisdom.score || "",
-      charisma: character?.coreAbilities.charisma.score || "",
-    },
+    defaultValues: defaultFormValues,
   });
 
   if (!character && param.id) {
@@ -83,8 +92,12 @@ const CharacterForm: React.FC = () => {
     navigate(AppRoute.Characters);
   };
 
-  const hasAbilitiesErrors = () => {
-    return CORE_ABILITIES.some((ability) => errors[ability]);
+  // we need to check errors on each render so we don't need to use useMemo
+  const hasAbilitiesErrors = CORE_ABILITIES.some((ability) => errors[ability]);
+
+  const onResetButtonClick = () => {
+    reset(defaultFormValues);
+    setSelectedAvatar(character?.avatar || undefined);
   };
 
   return (
@@ -146,7 +159,7 @@ const CharacterForm: React.FC = () => {
               </li>
             ))}
           </ul>
-          {hasAbilitiesErrors() && (
+          {hasAbilitiesErrors && (
             <p className="error-message">All these fields are required</p>
           )}
         </fieldset>
@@ -163,7 +176,12 @@ const CharacterForm: React.FC = () => {
           />
         </fieldset>
         <div className="new-character-form-buttons">
-          <Button variant="danger" type="reset" label="Reset" />
+          <Button
+            variant="danger"
+            type="button"
+            label="Reset form"
+            onClick={onResetButtonClick}
+          />
           <Button
             disabled={isSubmitting}
             label={isSubmitting ? "Saving..." : "Save"}
