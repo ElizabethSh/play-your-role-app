@@ -52,24 +52,27 @@ const CharacterForm: React.FC = () => {
     }
   }, [character]);
 
+  const defaultValues: FormFields = {
+    name: character?.name || "",
+    notes: character?.notes || "",
+    image: undefined,
+    strength: character?.coreAbilities.strength.score || "",
+    dexterity: character?.coreAbilities.dexterity.score || "",
+    constitution: character?.coreAbilities.constitution.score || "",
+    intelligence: character?.coreAbilities.intelligence.score || "",
+    wisdom: character?.coreAbilities.wisdom.score || "",
+    charisma: character?.coreAbilities.charisma.score || "",
+  };
+
   const {
     register,
     handleSubmit,
+    reset,
     setError,
     clearErrors,
     formState: { errors, isSubmitting },
   } = useForm<FormFields>({
-    defaultValues: {
-      name: character?.name || "",
-      notes: character?.notes || "",
-      image: undefined,
-      strength: character?.coreAbilities.strength.score || "",
-      dexterity: character?.coreAbilities.dexterity.score || "",
-      constitution: character?.coreAbilities.constitution.score || "",
-      intelligence: character?.coreAbilities.intelligence.score || "",
-      wisdom: character?.coreAbilities.wisdom.score || "",
-      charisma: character?.coreAbilities.charisma.score || "",
-    },
+    defaultValues: defaultValues,
   });
 
   if (!character && param.id) {
@@ -89,10 +92,16 @@ const CharacterForm: React.FC = () => {
     navigate(AppRoute.Characters);
   };
 
-  const hasAbilitiesErrors = React.useMemo(
-    () => CORE_ABILITIES.some((ability) => errors[ability]),
-    [errors]
-  );
+  // we need to check errors on each render so we don't need to use useMemo
+  const hasAbilitiesErrors = CORE_ABILITIES.some((ability) => errors[ability]);
+
+  const onResetButtonClick = () => {
+    const formFieldsKeys = Object.keys(defaultValues) as (keyof FormFields)[];
+    formFieldsKeys.forEach((key) => {
+      reset({ [key]: "" });
+    });
+    setSelectedAvatar(undefined);
+  };
 
   return (
     <section className="main-content new-character">
@@ -170,7 +179,12 @@ const CharacterForm: React.FC = () => {
           />
         </fieldset>
         <div className="new-character-form-buttons">
-          <Button variant="danger" type="reset" label="Reset" />
+          <Button
+            variant="danger"
+            type="button"
+            label="Reset form"
+            onClick={onResetButtonClick}
+          />
           <Button
             disabled={isSubmitting}
             label={isSubmitting ? "Saving..." : "Save"}
