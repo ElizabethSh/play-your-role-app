@@ -8,6 +8,37 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  align-items: start;
+
+  .avatar-upload-input {
+    display: none;
+  }
+
+  // TODO: remove after button component refactoring
+  .avatar-upload-button {
+    background-color: var(--text-color-primary);
+    color: var(--text-color-secondary);
+    border: 2px solid transparent;
+
+    &:hover,
+    &:focus {
+      background-color: var(--text-color-secondary);
+      color: var(--text-color-primary);
+      border: 2px solid var(--text-color-primary);
+    }
+  }
+
+  // TODO: remove after button component refactoring
+  .avatar-reset-button {
+    border: 2px solid var(--text-color-error);
+    color: var(--text-color-error);
+
+    &:hover,
+    &:focus {
+      background-color: var(--text-color-error);
+      color: var(--text-color-secondary);
+    }
+  }
 }
 
 .avatar-upload-label {
@@ -22,14 +53,8 @@
   width: 100%;
 }
 
-// TODO: remove after button component refactoring
-.avatar-reset-button {
-  border: 2px solid var(--text-color-primary);
-  color: var(--text-color-primary);
-
-  &:hover,
-  &:focus {
-    background-color: var(--text-color-primary);
-    color: var(--text-color-secondary);
-  }
+.avatar-upload-error {
+  color: var(--text-color-error);
+  font-size: 1rem;
+  margin-top: 0.5rem;
 }

@@ -49,6 +49,8 @@ const CharacterForm: React.FC = () => {
   const {
     register,
     handleSubmit,
+    setError,
+    clearErrors,
     formState: { errors, isSubmitting },
   } = useForm<FormFields>({
     defaultValues: {
@@ -110,7 +112,12 @@ const CharacterForm: React.FC = () => {
           <AvatarPicker
             onSelect={setSelectedAvatar}
             selectedAvatar={selectedAvatar}
+            setError={(msg: string) => setError("image", { message: msg })}
+            clearError={() => clearErrors("image")}
           />
+          {!!errors.image && (
+            <p className="error-message">{errors.image.message}</p>
+          )}
         </fieldset>
         <fieldset className="new-character-form-fieldset abilities">
           <legend className="new-character-form-legend">Core abilities</legend>
