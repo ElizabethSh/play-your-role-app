@@ -1,4 +1,4 @@
-import React, { useId } from "react";
+import React, { useEffect, useId } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -46,6 +46,12 @@ const CharacterForm: React.FC = () => {
     title = "Edit character";
   }
 
+  useEffect(() => {
+    if (character && character.avatar) {
+      setSelectedAvatar(character.avatar);
+    }
+  }, [character]);
+
   const {
     register,
     handleSubmit,
@@ -56,7 +62,7 @@ const CharacterForm: React.FC = () => {
     defaultValues: {
       name: character?.name || "",
       notes: character?.notes || "",
-      image: character?.avatar || "",
+      image: undefined,
       strength: character?.coreAbilities.strength.score || "",
       dexterity: character?.coreAbilities.dexterity.score || "",
       constitution: character?.coreAbilities.constitution.score || "",
@@ -83,9 +89,10 @@ const CharacterForm: React.FC = () => {
     navigate(AppRoute.Characters);
   };
 
-  const hasAbilitiesErrors = () => {
-    return CORE_ABILITIES.some((ability) => errors[ability]);
-  };
+  const hasAbilitiesErrors = React.useMemo(
+    () => CORE_ABILITIES.some((ability) => errors[ability]),
+    [errors]
+  );
 
   return (
     <section className="main-content new-character">
@@ -146,7 +153,7 @@ const CharacterForm: React.FC = () => {
               </li>
             ))}
           </ul>
-          {hasAbilitiesErrors() && (
+          {hasAbilitiesErrors && (
             <p className="error-message">All these fields are required</p>
           )}
         </fieldset>
