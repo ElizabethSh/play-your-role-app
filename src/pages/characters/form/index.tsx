@@ -52,7 +52,7 @@ const CharacterForm: React.FC = () => {
     }
   }, [character]);
 
-  const defaultValues: FormFields = {
+  const defaultFormValues: FormFields = {
     name: character?.name || "",
     notes: character?.notes || "",
     image: undefined,
@@ -72,7 +72,7 @@ const CharacterForm: React.FC = () => {
     clearErrors,
     formState: { errors, isSubmitting },
   } = useForm<FormFields>({
-    defaultValues: defaultValues,
+    defaultValues: defaultFormValues,
   });
 
   if (!character && param.id) {
@@ -96,11 +96,8 @@ const CharacterForm: React.FC = () => {
   const hasAbilitiesErrors = CORE_ABILITIES.some((ability) => errors[ability]);
 
   const onResetButtonClick = () => {
-    const formFieldsKeys = Object.keys(defaultValues) as (keyof FormFields)[];
-    formFieldsKeys.forEach((key) => {
-      reset({ [key]: "" });
-    });
-    setSelectedAvatar(undefined);
+    reset(defaultFormValues);
+    setSelectedAvatar(character?.avatar || undefined);
   };
 
   return (
