@@ -10,6 +10,11 @@
   gap: 0.5rem;
   align-items: start;
 
+  .avatar-upload-label {
+    font-size: 1rem;
+    color: var(--text-color-primary);
+  }
+
   .avatar-upload-input {
     display: none;
   }
@@ -28,6 +33,13 @@
     }
   }
 
+  .avatar-preview-container {
+    display: flex;
+    align-items: start;
+    gap: 2rem;
+    width: 100%;
+  }
+
   // TODO: remove after button component refactoring
   .avatar-reset-button {
     border: 2px solid var(--text-color-error);
@@ -39,22 +51,4 @@
       color: var(--text-color-secondary);
     }
   }
-}
-
-.avatar-upload-label {
-  font-size: 1rem;
-  color: var(--text-color-primary);
-}
-
-.avatar-preview-container {
-  display: flex;
-  align-items: start;
-  gap: 2rem;
-  width: 100%;
-}
-
-.avatar-upload-error {
-  color: var(--text-color-error);
-  font-size: 1rem;
-  margin-top: 0.5rem;
 }
