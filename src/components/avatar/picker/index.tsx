@@ -9,7 +9,6 @@ type AvatarProps = {
   selectedAvatar?: string;
   setError: (error: string) => void;
   clearError?: () => void;
-  error?: string;
 };
 
 const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB
