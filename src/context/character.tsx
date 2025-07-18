@@ -41,7 +41,7 @@ export const CharacterContext = createContext<CharacterContextType | undefined>(
 export const CharacterProvider = ({ children }: CharacterProps) => {
   const [characters, setCharacters] = useState<Character[]>([]);
   const [isLoadingError, setIsLoadingError] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const { getValue, setValue } = useIndexedDB(INDEXEDDB_KEY);
 
