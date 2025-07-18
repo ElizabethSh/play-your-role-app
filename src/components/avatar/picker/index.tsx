@@ -1,21 +1,8 @@
 import React from "react";
 
-import "./picker.scss";
+import Button from "@mui/material/Button";
 
-const AVATARS = [
-  {
-    src: "https://i.poweredtemplates.com/p/sp/117921/sp_p_slide1.jpg?tr=w-445",
-    characterClass: "paladin",
-  },
-  {
-    src: "https://i.poweredtemplates.com/p/sp/125412/sp_p_slide1.jpg?tr=w-445",
-    characterClass: "rogue",
-  },
-  {
-    src: "https://i.poweredtemplates.com/p/sp/130680/sp_p_slide1.jpg?tr=w-445",
-    characterClass: "wizard",
-  },
-] as const;
+import "./picker.scss";
 
 type AvatarProps = {
   onSelect: (avatar: string) => void;
@@ -23,31 +10,63 @@ type AvatarProps = {
 };
 
 const AvatarPicker: React.FC<AvatarProps> = ({ onSelect, selectedAvatar }) => {
-  const onAvatarClick = (avatar: string) => {
-    onSelect(avatar);
+  const inputRef = React.useRef<HTMLInputElement>(null);
+
+  const onImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      if (event.target?.result && typeof event.target.result === "string") {
+        onSelect(event.target.result);
+      }
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const onReset = () => {
+    onSelect("");
+    if (inputRef.current) {
+      inputRef.current.value = "";
+    }
   };
 
   return (
     <div className="avatar-picker">
       <h2 className="label">Select an Avatar</h2>
-      <p className="avatar-picker-description">
-        Choose from a variety of avatars to represent yourself.
-      </p>
 
-      <div className="avatar-picker-buttons">
-        {AVATARS.map(({ src, characterClass }) => (
-          <button
-            aria-label="Select avatar"
-            className={`avatar-button button ${
-              selectedAvatar === src ? "selected" : ""
-            }`}
-            key={characterClass}
-            type="button"
-            onClick={() => onAvatarClick(src)}
-          >
-            <img src={src} alt={characterClass} width="120" height="150" />
-          </button>
-        ))}
+      <div className="avatar-picker-upload">
+        <label htmlFor="avatar-upload" className="avatar-upload-label">
+          Upload your own avatar:
+        </label>
+        <input
+          id="avatar-upload"
+          type="file"
+          accept="image/*"
+          ref={inputRef}
+          onChange={onImageChange}
+        />
+        {selectedAvatar && (
+          <div className="avatar-preview-container">
+            <div className="avatar-preview">
+              <img
+                src={selectedAvatar}
+                alt="Selected avatar preview"
+                width="120"
+                height="150"
+              />
+            </div>
+            <Button
+              className="avatar-reset-button"
+              variant="outlined"
+              color="secondary"
+              onClick={onReset}
+              aria-label="Reset avatar selection"
+            >
+              Clear
+            </Button>
+          </div>
+        )}
       </div>
     </div>
   );
