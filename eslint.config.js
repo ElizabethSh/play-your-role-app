@@ -65,5 +65,22 @@ export default tseslint.config(
       ],
       "simple-import-sort/exports": "error",
     },
+  },
+  // Test files configuration - more permissive rules
+  {
+    files: [
+      "**/*.test.{ts,tsx}",
+      "**/*.spec.{ts,tsx}",
+      "**/test-utils/**/*.{ts,tsx}",
+      "**/mocks/**/*.{ts,tsx}",
+    ],
+    rules: {
+      // Allow any types in test files for flexibility with mocks and test setup
+      "@typescript-eslint/no-explicit-any": "off",
+      // Allow unused variables in tests (often used for type checking)
+      "@typescript-eslint/no-unused-vars": "off",
+      // Allow non-null assertions in tests
+      "@typescript-eslint/no-non-null-assertion": "off",
+    },
   }
 );
