@@ -22,7 +22,8 @@
       }
     }
 
-    .logo {
+    .logo,
+    .link-logo {
       height: 7rem;
       width: 7rem;
 
@@ -33,8 +34,6 @@
     }
 
     .link-logo {
-      height: 7rem;
-
       &:hover,
       &:focus {
         opacity: 0.8;
@@ -100,6 +99,10 @@
     place-items: center;
     width: 90%;
     max-width: 75rem; // 1200px;
+
+    @media (width < 768px) {
+      width: 100%;
+    }
   }
 
   .layout-footer {
@@ -120,11 +123,11 @@
     background-repeat: no-repeat;
     background-size: cover;
 
-    @media (width > 768px) {
+    @media (width > 768px), (orientation: landscape) {
       background-image: url("../../../bg-desktop.jpeg");
     }
 
-    @media (width < 768px) {
+    @media (width < 768px), (orientation: portrait) {
       background-image: url("../../../bg-phone.jpg");
     }
   }
