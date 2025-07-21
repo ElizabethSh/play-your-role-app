@@ -99,9 +99,6 @@ code {
   word-break: break-word;
 
   @media (width <= 767px) {
-    font-size: 3rem;
-  }
-  @media (width <= 480px) {
     font-size: 2rem;
   }
 }
