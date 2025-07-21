@@ -1,3 +1,5 @@
+@use "../../index.scss" as *;
+
 .modal {
   border-radius: 0.5rem;
   box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.1);
@@ -11,7 +13,7 @@
     background: var(--backdrop-color);
   }
 
-  @media (width <= 767px) {
+  @media (width < $breakpoint-tablet) {
     &[open] {
       display: grid;
       height: 100%;

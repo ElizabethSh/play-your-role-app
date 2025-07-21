@@ -1,10 +1,12 @@
+@use "../../index.scss" as *;
+
 .avatar {
   &.avatar-small {
     height: 3rem;
     width: 3rem;
     font-size: 1.5rem;
 
-    @media (width < 768px) {
+    @media (width < $breakpoint-tablet) {
       height: 2.5rem;
       width: 2.5rem;
       font-size: 1.25rem;
@@ -16,7 +18,7 @@
     width: 7rem;
     font-size: 4rem;
 
-    @media (width < 768px) {
+    @media (width < $breakpoint-tablet) {
       height: 5rem;
       width: 5rem;
       font-size: 2.5rem;

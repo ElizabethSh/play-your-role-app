@@ -1,3 +1,5 @@
+@use "../../index.scss" as *;
+
 .notifications-list {
   display: grid;
   gap: 1rem;
@@ -7,7 +9,7 @@
   width: 29rem;
   z-index: 100;
 
-  @media (width < 768px) {
+  @media (width < $breakpoint-tablet) {
     left: 0;
     top: 3rem;
     width: 100vw;

@@ -1,11 +1,11 @@
-@use "../../index.scss";
+@use "../../index.scss" as *;
 
 .characters-list {
   --gap: 4rem;
   --margins: 4rem;
   --title-height: 4.5rem;
 
-  @include index.custom-scrollbar;
+  @include custom-scrollbar;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -15,7 +15,7 @@
   );
   overflow-y: auto;
 
-  @media (width <= 1024px) {
+  @media (width <= $breakpoint-desktop) {
     height: var(--content-height);
     margin: 1rem 0 0;
   }
@@ -54,7 +54,7 @@
   text-decoration: none;
   width: 100%;
 
-  @media (width <= 767px) {
+  @media (width <= $breakpoint-tablet) {
     padding-left: 1rem;
     padding-right: 1rem;
   }
@@ -65,7 +65,7 @@
     display: grid;
     padding: 0;
 
-    @media (width <= 480px) {
+    @media (width <= $breakpoint-mobile) {
       display: none;
     }
   }
@@ -90,7 +90,7 @@
     display: grid;
     place-items: center;
 
-    @media (width <= 767px) {
+    @media (width <= $breakpoint-tablet) {
       height: 1.5rem;
       width: 1.5rem;
       font-size: 0.75rem;

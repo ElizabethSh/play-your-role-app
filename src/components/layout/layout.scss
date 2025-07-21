@@ -1,3 +1,5 @@
+@use "../../index.scss" as *;
+
 .layout {
   $bg-desktop: "/bg-desktop.jpeg";
   $bg-phone: "/bg-phone.jpg";
@@ -20,7 +22,7 @@
       gap: 4rem;
       justify-content: start;
 
-      @media (width < 1024px) {
+      @media (width < $breakpoint-desktop) {
         gap: 2rem;
       }
     }
@@ -30,7 +32,7 @@
       height: 7rem;
       width: 7rem;
 
-      @media (width < 768px) {
+      @media (width < $breakpoint-tablet) {
         height: 5rem;
         width: 5rem;
       }
@@ -52,7 +54,7 @@
       margin: 0;
       padding: 0;
 
-      @media (width < 768px) {
+      @media (width < $breakpoint-tablet) {
         gap: 1.5rem;
         font-size: 1rem;
       }
@@ -103,7 +105,7 @@
     width: 90%;
     max-width: 75rem; // 1200px;
 
-    @media (width < 768px) {
+    @media (width < $breakpoint-tablet) {
       width: 100%;
     }
   }
@@ -116,7 +118,7 @@
     height: 4rem;
     justify-content: center;
 
-    @media (width < 1024px) {
+    @media (width < $breakpoint-desktop) {
       height: 2rem;
       font-size: 0.8rem;
     }
@@ -126,12 +128,12 @@
     background-repeat: no-repeat;
     background-size: cover;
 
-    @media (width > 768px), (orientation: landscape) {
-      background-image: url(#{$bg-desktop});
+    @media (width > $breakpoint-tablet), (orientation: landscape) {
+      background-image: url("../../../bg-desktop.jpeg");
     }
 
-    @media (width < 768px), (orientation: portrait) {
-      background-image: url(#{$bg-phone});
+    @media (width < $breakpoint-tablet), (orientation: portrait) {
+      background-image: url("../../../bg-phone.jpg");
     }
   }
 }

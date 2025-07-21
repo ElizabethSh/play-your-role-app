@@ -1,11 +1,11 @@
-@use "../../index.scss";
+@use "../../index.scss" as *;
 
 .modal-content {
   display: grid;
   gap: 1.5rem;
   grid-template: "title" min-content "content" 5rem "actions" min-content;
 
-  @media (width <= 767px) {
+  @media (width < $breakpoint-tablet) {
     width: 100%;
   }
 }
@@ -19,13 +19,13 @@
   text-align: center;
   word-break: break-word;
 
-  @media (width <= 767px) {
+  @media (width < $breakpoint-tablet) {
     font-size: 1.5rem;
   }
 }
 
 .modal-description {
-  @include index.custom-scrollbar;
+  @include custom-scrollbar;
   color: var(--text-color-primary);
   font-size: 1.25rem;
   font-weight: 500;

@@ -1,3 +1,4 @@
+@use "../../../index.scss" as *;
 .new-character {
   display: grid;
   gap: 3rem;
@@ -8,7 +9,7 @@
     flex-direction: column;
     gap: 2rem;
 
-    @media (width < 768px) {
+    @media (width < $breakpoint-tablet) {
       grid-template-rows: min-content auto 1fr min-content;
       gap: 3rem;
     }
@@ -26,7 +27,7 @@
         margin-bottom: 1.25rem;
         text-align: center;
 
-        @media (width < 768px) {
+        @media (width < $breakpoint-tablet) {
           font-size: 1.75rem;
           margin-bottom: 2rem;
         }
@@ -40,14 +41,14 @@
         padding: 0;
         justify-items: center;
 
-        @media (width < 768px) {
+        @media (width < $breakpoint-tablet) {
           justify-items: left;
           grid-template-columns: repeat(3, 1fr);
         }
-        @media (width < 480px) {
+        @media (width < $breakpoint-mobile) {
           grid-template-columns: repeat(2, 1fr);
         }
-        @media (width >= 768px) {
+        @media (width >= $breakpoint-tablet) {
           background-color: var(--blue-400);
           border-radius: 0.5rem;
           padding: 1rem 0;
@@ -61,10 +62,10 @@
           list-style: none;
           padding: 0;
 
-          @media (width < 768px) {
+          @media (width < $breakpoint-tablet) {
             align-items: flex-start;
           }
-          @media (width < 480px) {
+          @media (width < $breakpoint-mobile) {
             background-color: transparent;
           }
 
@@ -105,7 +106,7 @@
     .button {
       width: 15rem;
 
-      @media (width < 768px) {
+      @media (width < $breakpoint-tablet) {
         width: 100%;
       }
     }

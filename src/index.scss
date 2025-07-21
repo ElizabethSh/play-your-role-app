@@ -1,3 +1,8 @@
+// SCSS breakpoint variables
+$breakpoint-desktop: 1024px !default;
+$breakpoint-tablet: 767px !default;
+$breakpoint-mobile: 480px !default;
+
 :root {
   --blue-100: #1f2629;
   --blue-200: #043a51;
@@ -60,7 +65,7 @@ code {
   font-size: 1.5rem;
   border-radius: 0.25rem;
 
-  @media (width < 1024px) {
+  @media (width < $breakpoint-desktop) {
     font-size: 1rem;
     padding: 0.75rem;
   }
@@ -97,7 +102,7 @@ code {
   text-align: center;
   word-break: break-word;
 
-  @media (width < 1024px) {
+  @media (width < $breakpoint-desktop) {
     font-size: 2rem;
   }
 }
@@ -109,12 +114,12 @@ code {
   padding-top: 5rem;
   width: 100%;
 
-  @media (width >= 1024px) {
+  @media (width >= $breakpoint-desktop) {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
   }
 
-  @media (width < 1024px) {
+  @media (width < $breakpoint-desktop) {
     padding-top: 2rem;
     padding-left: 1rem;
     padding-right: 1rem;

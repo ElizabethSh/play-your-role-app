@@ -1,3 +1,5 @@
+@use "../../index.scss" as *;
+
 .button {
   background-color: transparent;
   border-radius: 0.25rem;
@@ -8,7 +10,7 @@
   text-align: center;
   text-decoration: none;
 
-  @media (width <= 767px) {
+  @media (width < $breakpoint-tablet) {
     font-size: 1.25rem;
     padding: 0.75rem;
   }
