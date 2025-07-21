@@ -35,8 +35,8 @@ const CharactersPage: React.FC = () => {
     }
 
     return (
-      <>
-        <p className="characters-empty-list">
+      <div className="characters-empty">
+        <p className="characters-empty-description">
           You have not created any characters yet
         </p>
         <Link
@@ -45,7 +45,7 @@ const CharactersPage: React.FC = () => {
         >
           Create new character
         </Link>
-      </>
+      </div>
     );
   };
 
