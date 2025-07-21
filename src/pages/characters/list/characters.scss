@@ -1,7 +1,10 @@
 .characters {
+  display: flex;
+  flex-direction: column;
+
   .link-as-button-secondary {
     display: flex;
-    justify-self: center;
+    align-self: center;
   }
 
   .characters-error {
