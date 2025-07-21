@@ -43,5 +43,9 @@
     @media (width < 768px) {
       row-gap: 1.5rem;
     }
+
+    @media (width < 480px) {
+      flex-direction: column;
+    }
   }
 }
