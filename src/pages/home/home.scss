@@ -4,6 +4,10 @@
   flex-direction: column;
   row-gap: 3.5rem;
 
+  @media (width < 768px) {
+    row-gap: 1.5rem;
+  }
+
   .app-title {
     color: var(--red-300);
     font-size: 5.5rem;
@@ -33,9 +37,10 @@
   .home-buttons {
     display: flex;
     gap: 2.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
 
     @media (width < 768px) {
-      flex-direction: column;
       row-gap: 1.5rem;
     }
   }
