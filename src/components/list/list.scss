@@ -13,7 +13,6 @@
   height: calc(
     var(--content-height) - var(--margins) - var(--title-height) - var(--gap)
   );
-  margin: 3rem 0 0;
   overflow-y: auto;
 
   @media (width <= 767px) {
