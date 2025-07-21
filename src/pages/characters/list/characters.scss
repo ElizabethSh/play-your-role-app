@@ -1,7 +1,13 @@
+@use "../../../index.scss" as *;
+
 .characters {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
   .link-as-button-secondary {
     display: flex;
-    justify-self: center;
+    align-self: center;
   }
 
   .characters-error {
@@ -13,7 +19,7 @@
     text-align: center;
     height: 100%;
 
-    @media (width < 768px) {
+    @media (width < $breakpoint-tablet) {
       font-size: 1.25rem;
     }
   }
@@ -22,17 +28,27 @@
     padding: 0;
   }
 
-  .characters-empty-list {
-    align-items: center;
-    color: var(--text-color-primary);
-    display: flex;
-    font-size: 2rem;
-    justify-content: center;
-    margin: 20rem 0 3rem;
+  .characters-empty {
+    display: grid;
+    place-content: center;
+    height: calc(100% - 5rem);
+    gap: 3rem;
+    width: 100%;
+    justify-items: center;
 
-    @media (width < 768px) {
-      font-size: 1.25rem;
-      margin: 3rem 0;
+    @media (width < $breakpoint-desktop) {
+      gap: 1.5rem;
+    }
+
+    .characters-empty-description {
+      color: var(--text-color-primary);
+      font-size: 2rem;
+      margin: 0;
+      text-align: center;
+
+      @media (width < $breakpoint-desktop) {
+        font-size: 1.25rem;
+      }
     }
   }
 }

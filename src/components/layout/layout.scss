@@ -1,4 +1,9 @@
+@use "../../index.scss" as *;
+
 .layout {
+  $bg-desktop: "/bg-desktop.jpeg";
+  $bg-phone: "/bg-phone.jpg";
+
   background-color: var(--background-color-primary);
   display: grid;
   grid-template-columns: 1fr;
@@ -17,14 +22,27 @@
       gap: 4rem;
       justify-content: start;
 
-      @media (width < 768px) {
+      @media (width < $breakpoint-desktop) {
         gap: 2rem;
       }
     }
 
-    .link-logo:hover,
-    .link-logo:focus {
-      opacity: 0.8;
+    .logo,
+    .link-logo {
+      height: 7rem;
+      width: 7rem;
+
+      @media (width < $breakpoint-tablet) {
+        height: 5rem;
+        width: 5rem;
+      }
+    }
+
+    .link-logo {
+      &:hover,
+      &:focus {
+        opacity: 0.8;
+      }
     }
 
     .nav-list {
@@ -36,35 +54,44 @@
       margin: 0;
       padding: 0;
 
-      @media (width < 768px) {
+      @media (width < $breakpoint-tablet) {
         gap: 1.5rem;
         font-size: 1rem;
       }
 
       a {
         text-decoration: none;
-      }
 
-      a.nav-link-inactive {
-        color: var(--text-color-secondary);
+        &.nav-link-inactive {
+          color: var(--text-color-secondary);
 
-        &:hover,
-        &:focus {
-          color: var(--color-link-hover);
+          &:after {
+            content: "";
+            background-color: transparent;
+            display: block;
+            height: 2px;
+            margin-top: 0.5rem;
+            width: 100%;
+          }
+
+          &:hover,
+          &:focus {
+            color: var(--color-link-hover);
+          }
         }
-      }
 
-      a.nav-link-active {
-        color: var(--color-link-active);
+        &.nav-link-active {
+          color: var(--color-link-active);
 
-        &:after {
-          content: "";
-          background-color: var(--color-link-hover);
-          box-shadow: 0 0 6px var(--color-link-hover);
-          display: block;
-          height: 2px;
-          margin-top: 0.5rem;
-          width: 100%;
+          &:after {
+            content: "";
+            background-color: var(--color-link-hover);
+            box-shadow: 0 0 6px var(--color-link-hover);
+            display: block;
+            height: 2px;
+            margin-top: 0.5rem;
+            width: 100%;
+          }
         }
       }
     }
@@ -75,12 +102,11 @@
     height: 100%;
     margin: 0 auto;
     place-items: center;
+    width: 90%;
+    max-width: 75rem; // 1200px;
 
-    @media (width > 768px) {
-      width: 90%;
-    }
-    @media (width > 1200px) {
-      width: 1200px;
+    @media (width < $breakpoint-tablet) {
+      width: 100%;
     }
   }
 
@@ -91,36 +117,23 @@
     display: flex;
     height: 4rem;
     justify-content: center;
+
+    @media (width < $breakpoint-desktop) {
+      height: 2rem;
+      font-size: 0.8rem;
+    }
   }
 
-  @media (width > 768px) {
-    .logo {
-      height: 7rem;
-      width: 7rem;
-    }
+  .layout-main {
+    background-repeat: no-repeat;
+    background-size: cover;
 
-    .layout-main {
+    @media (width > $breakpoint-tablet), (orientation: landscape) {
       background-image: url("../../../bg-desktop.jpeg");
-      background-repeat: no-repeat;
-      background-size: cover;
-    }
-  }
-
-  @media (width <= 767px) {
-    .logo {
-      height: 5rem;
-      margin-left: 5%;
-      width: 5rem;
     }
 
-    .layout-main {
+    @media (width < $breakpoint-tablet), (orientation: portrait) {
       background-image: url("../../../bg-phone.jpg");
-      background-repeat: no-repeat;
-      background-size: cover;
-
-      .content:has(.home) {
-        width: 90%;
-      }
     }
   }
 }
