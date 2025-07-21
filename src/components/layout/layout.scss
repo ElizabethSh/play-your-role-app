@@ -1,4 +1,7 @@
 .layout {
+  $bg-desktop: "/bg-desktop.jpeg";
+  $bg-phone: "/bg-phone.jpg";
+
   background-color: var(--background-color-primary);
   display: grid;
   grid-template-columns: 1fr;
@@ -124,11 +127,11 @@
     background-size: cover;
 
     @media (width > 768px), (orientation: landscape) {
-      background-image: url("../../../bg-desktop.jpeg");
+      background-image: url(#{$bg-desktop});
     }
 
     @media (width < 768px), (orientation: portrait) {
-      background-image: url("../../../bg-phone.jpg");
+      background-image: url(#{$bg-phone});
     }
   }
 }
