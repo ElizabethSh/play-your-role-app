@@ -17,7 +17,7 @@ const Button: React.FC<ButtonProps> = ({
   variant,
   ...buttonProps
 }) => {
-  const classNames = ["button", `button-${variant}`];
+  const classNames = ["button-custom", `button-${variant}`];
   return (
     <button {...buttonProps} type={type} className={classNames.join(" ")}>
       {label && <span>{label}</span>}
