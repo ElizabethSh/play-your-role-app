@@ -53,11 +53,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
-
 .link-as-button {
   text-decoration: none;
   text-align: center;
@@ -72,13 +67,13 @@ code {
 }
 
 .link-as-button-primary {
-  border: 2px solid var(--text-color-secondary);
   color: var(--text-color-secondary);
+  background-color: var(--background-color-primary);
 
   &:hover,
   &:focus {
-    background-color: var(--background-color-primary);
-    color: var(--text-color-secondary);
+    background-color: var(--background-color-secondary);
+    color: var(--background-color-info);
   }
 }
 
