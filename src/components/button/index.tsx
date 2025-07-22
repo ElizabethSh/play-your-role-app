@@ -15,18 +15,16 @@ const Button: React.FC<ButtonProps> = ({
   modification,
   disabled = false,
   ...buttonProps
-}) => {
-  return (
-    <MUIButton
-      {...buttonProps}
-      variant={variant}
-      className={`button-custom button-${modification}`}
-      type={type}
-      disabled={disabled}
-    >
-      {label}
-    </MUIButton>
-  );
-};
+}) => (
+  <MUIButton
+    {...buttonProps}
+    variant={variant}
+    className={`button-custom button-${modification}`}
+    type={type}
+    disabled={disabled}
+  >
+    {label}
+  </MUIButton>
+);
 
 export default Button;
