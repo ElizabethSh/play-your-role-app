@@ -1,6 +1,9 @@
 import { FormFields } from "@pages/characters/form";
+import { CORE_ABILITIES } from "@settings";
 
 import { Ability } from "types/character";
+
+type CoreAbilities = Record<string, Ability>;
 
 const getAbility = (ability: number | ""): Ability => {
   return {
@@ -9,13 +12,9 @@ const getAbility = (ability: number | ""): Ability => {
   };
 };
 
-export const buildCoreAbilities = (data: FormFields) => {
-  return {
-    strength: getAbility(data.strength),
-    dexterity: getAbility(data.dexterity),
-    constitution: getAbility(data.constitution),
-    intelligence: getAbility(data.intelligence),
-    wisdom: getAbility(data.wisdom),
-    charisma: getAbility(data.charisma),
-  };
+export const buildCoreAbilities = (data: FormFields): CoreAbilities => {
+  return CORE_ABILITIES.reduce((acc, ability) => {
+    acc[ability] = getAbility(data[ability]);
+    return acc;
+  }, {} as CoreAbilities);
 };
