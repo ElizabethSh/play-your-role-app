@@ -77,18 +77,17 @@ export const CharacterProvider = ({ children }: CharacterProps) => {
 
   const editCharacter = useCallback(
     async (id: string, data: FormFields, avatar?: string) => {
-      const updatedCharacters = characters.map((character) => {
-        if (character.id === id) {
-          return {
-            ...character,
-            name: data.name,
-            notes: data.notes,
-            avatar: avatar || data.image,
-            coreAbilities: buildCoreAbilities(data),
-          };
-        }
-        return character;
-      });
+      const idx = characters.findIndex((character) => character.id === id);
+      if (idx === -1) return;
+      const updatedCharacter = {
+        ...characters[idx],
+        name: data.name,
+        notes: data.notes,
+        avatar: avatar || data.image,
+        coreAbilities: buildCoreAbilities(data),
+      };
+      const updatedCharacters = [...characters];
+      updatedCharacters[idx] = updatedCharacter;
       setCharacters(updatedCharacters);
       await setValue(updatedCharacters, "edit");
     },
