@@ -1,6 +1,6 @@
 import React from "react";
 
-import Button from "@components/button";
+import Button from "@components/button/button";
 
 import "./content.scss";
 
@@ -20,10 +20,17 @@ const ConfirmationModalContent: React.FC<ConfirmationModalContentProps> = ({
       <div className="modal-actions">
         <Button
           label="Cancel"
-          onClick={() => onCancelClick()}
-          variant="primary"
+          onClick={onCancelClick}
+          variant="outlined"
+          modification="primary"
         />
-        <Button label="Delete" variant="danger" onClick={onDeleteClick} />
+        <Button
+          label="Delete"
+          type="button"
+          variant="outlined"
+          modification="danger"
+          onClick={onDeleteClick}
+        />
       </div>
     </div>
   );

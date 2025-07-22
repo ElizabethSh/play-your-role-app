@@ -3,7 +3,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 
 import AvatarPicker from "@components/avatar/picker";
-import Button from "@components/button";
+import Button from "@components/button/button";
 import { useCharacters } from "@context/character";
 import NotFoundPage from "@pages/not-found";
 
@@ -177,15 +177,17 @@ const CharacterForm: React.FC = () => {
         </fieldset>
         <div className="new-character-form-buttons">
           <Button
-            variant="danger"
             type="button"
+            variant="outlined"
             label="Reset form"
             onClick={onResetButtonClick}
+            modification="danger"
           />
           <Button
             disabled={isSubmitting}
             label={isSubmitting ? "Saving..." : "Save"}
-            variant="confirm"
+            modification="confirm"
+            variant="outlined"
             type="submit"
           />
         </div>
