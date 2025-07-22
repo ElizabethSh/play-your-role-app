@@ -3,7 +3,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 
 import AvatarPicker from "@components/avatar/picker";
-import Button from "@components/button/button";
+import Button from "@components/button";
 import { useCharacters } from "@context/character";
 import NotFoundPage from "@pages/not-found";
 
