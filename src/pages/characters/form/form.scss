@@ -99,6 +99,7 @@
   }
 
   .new-character-form-buttons {
+    margin-top: auto;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
