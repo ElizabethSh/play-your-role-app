@@ -34,7 +34,7 @@ describe("AvatarPicker", () => {
       screen.getByRole("heading", { name: /select an avatar/i })
     ).toBeVisible();
     expect(screen.getByText(/upload your own avatar/i)).toBeVisible();
-    expect(screen.getByRole("button", { name: /choose image/i })).toBeVisible();
+    expect(screen.getByRole("button", { name: /upload image/i })).toBeVisible();
     expect(
       screen.queryByRole("button", { name: /clear/i })
     ).not.toBeInTheDocument();

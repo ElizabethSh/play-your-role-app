@@ -91,6 +91,7 @@ const AvatarPicker: React.FC<AvatarProps> = ({
               label="Clear"
               onClick={onReset}
               modification="danger"
+              aria-label="Reset avatar selection"
             />
           </div>
         )}
