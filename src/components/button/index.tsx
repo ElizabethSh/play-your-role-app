@@ -11,7 +11,7 @@ type ButtonProps = MUIButtonProps & {
 const Button: React.FC<ButtonProps> = ({
   variant,
   label,
-  type,
+  type = "button",
   modification,
   disabled = false,
   ...buttonProps
