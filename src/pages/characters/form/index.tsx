@@ -177,15 +177,17 @@ const CharacterForm: React.FC = () => {
         </fieldset>
         <div className="new-character-form-buttons">
           <Button
-            variant="danger"
             type="button"
+            variant="outlined"
             label="Reset form"
             onClick={onResetButtonClick}
+            modification="danger"
           />
           <Button
             disabled={isSubmitting}
             label={isSubmitting ? "Saving..." : "Save"}
-            variant="confirm"
+            modification="confirm"
+            variant="outlined"
             type="submit"
           />
         </div>

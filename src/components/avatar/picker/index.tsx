@@ -1,6 +1,6 @@
 import React from "react";
 
-import Button from "@mui/material/Button";
+import Button from "@components/button";
 
 import "./picker.scss";
 
@@ -71,12 +71,10 @@ const AvatarPicker: React.FC<AvatarProps> = ({
         />
         <Button
           variant="contained"
-          className="avatar-upload-button"
-          component="span"
+          label="Upload image"
           onClick={() => inputRef.current?.click()}
-        >
-          Choose Image
-        </Button>
+          modification="primary"
+        />
 
         {selectedAvatar && (
           <div className="avatar-preview-container">
@@ -89,14 +87,12 @@ const AvatarPicker: React.FC<AvatarProps> = ({
               />
             </div>
             <Button
-              className="avatar-reset-button"
               variant="outlined"
-              color="secondary"
+              label="Clear"
               onClick={onReset}
+              modification="danger"
               aria-label="Reset avatar selection"
-            >
-              Clear
-            </Button>
+            />
           </div>
         )}
       </div>

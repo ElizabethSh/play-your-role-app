@@ -1,28 +1,30 @@
-import React from "react";
+import MUIButton, { ButtonProps as MUIButtonProps } from "@mui/material/Button";
 
 import "./button.scss";
 
-type ButtonProps = Omit<
-  React.ButtonHTMLAttributes<HTMLButtonElement>,
-  "type"
-> & {
-  type?: "button" | "submit" | "reset";
+type ButtonProps = MUIButtonProps & {
   label: string;
-  variant: "primary" | "confirm" | "danger";
+  variant: "contained" | "outlined";
+  modification: "primary" | "confirm" | "danger";
 };
 
 const Button: React.FC<ButtonProps> = ({
-  type = "button",
-  label,
   variant,
+  label,
+  type = "button",
+  modification,
+  disabled = false,
   ...buttonProps
-}) => {
-  const classNames = ["button", `button-${variant}`];
-  return (
-    <button {...buttonProps} type={type} className={classNames.join(" ")}>
-      {label && <span>{label}</span>}
-    </button>
-  );
-};
+}) => (
+  <MUIButton
+    {...buttonProps}
+    variant={variant}
+    className={`button-custom button-${modification}`}
+    type={type}
+    disabled={disabled}
+  >
+    {label}
+  </MUIButton>
+);
 
 export default Button;

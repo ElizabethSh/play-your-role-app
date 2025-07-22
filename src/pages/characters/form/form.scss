@@ -90,7 +90,6 @@
       display: flex;
       flex-direction: column;
       gap: 1.5rem;
-      // width: 100%;
 
       input {
         width: 100%;
@@ -99,11 +98,12 @@
   }
 
   .new-character-form-buttons {
+    margin-top: auto;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
 
-    .button {
+    .button-custom {
       width: 15rem;
 
       @media (width < $breakpoint-tablet) {

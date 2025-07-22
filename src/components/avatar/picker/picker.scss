@@ -19,36 +19,10 @@
     display: none;
   }
 
-  // TODO: remove after button component refactoring
-  .avatar-upload-button {
-    background-color: var(--text-color-primary);
-    color: var(--text-color-secondary);
-    border: 2px solid transparent;
-
-    &:hover,
-    &:focus {
-      background-color: var(--text-color-secondary);
-      color: var(--text-color-primary);
-      border: 2px solid var(--text-color-primary);
-    }
-  }
-
   .avatar-preview-container {
     display: flex;
     align-items: start;
     gap: 2rem;
     width: 100%;
-  }
-
-  // TODO: remove after button component refactoring
-  .avatar-reset-button {
-    border: 2px solid var(--text-color-error);
-    color: var(--text-color-error);
-
-    &:hover,
-    &:focus {
-      background-color: var(--text-color-error);
-      color: var(--text-color-secondary);
-    }
   }
 }

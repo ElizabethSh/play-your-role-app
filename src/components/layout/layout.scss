@@ -4,6 +4,7 @@
   $bg-desktop: "/bg-desktop.jpeg";
   $bg-phone: "/bg-phone.jpg";
 
+  @include custom-scrollbar;
   background-color: var(--background-color-primary);
   display: grid;
   grid-template-columns: 1fr;
