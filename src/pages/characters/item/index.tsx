@@ -2,8 +2,8 @@ import React, { useMemo } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
 
 import Avatar from "@components/avatar";
+import BackLink from "@components/back-link";
 import { useCharacters } from "@context/character";
-import { arrowLeft as arrowLeftIcon } from "@icons";
 import EditIcon from "@mui/icons-material/Edit";
 import { AppRoute, CORE_ABILITIES } from "@settings";
 
@@ -24,10 +24,7 @@ const CharacterDetailsPage: React.FC = () => {
   return (
     <section className="main-content character">
       <div className="character-header">
-        <Link className="character-back-link" to={AppRoute.Characters}>
-          {arrowLeftIcon}
-          <span className="link-title">Back to characters</span>
-        </Link>
+        <BackLink href={AppRoute.Characters} label="Back to characters" />
         <Link
           className="character-edit-link"
           to={AppRoute.Characters + `/${id}/edit`}
