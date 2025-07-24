@@ -117,6 +117,7 @@ const CharacterForm: React.FC = () => {
             className="input"
             id="name"
             placeholder="Type your character name here"
+            maxLength={30}
             {...register("name", {
               required: true,
               pattern: /^[a-zA-Z\s]+$/,
