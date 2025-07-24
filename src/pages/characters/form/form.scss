@@ -1,8 +1,9 @@
 @use "../../../index.scss" as *;
+
 .new-character {
   display: grid;
   gap: 3rem;
-  grid-template-rows: min-content 1fr;
+  grid-template-rows: min-content min-content 1fr;
 
   .new-character-form {
     display: flex;

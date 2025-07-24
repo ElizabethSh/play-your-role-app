@@ -5,7 +5,7 @@ import Skeleton from "@mui/material/Skeleton";
 
 const CharactersSkeleton: React.FC = () => {
   return (
-    <Box sx={{ width: "100%", mt: 4 }}>
+    <Box sx={{ width: "100%", mt: 4 }} data-testid="characters-skeleton">
       {[...Array(3)].map((_, i) => (
         <Box key={i} sx={{ display: "flex", alignItems: "center", mb: 2 }}>
           <Skeleton variant="circular" width={48} height={48} sx={{ mr: 2 }} />

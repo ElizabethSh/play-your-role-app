@@ -3,6 +3,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 
 import AvatarPicker from "@components/avatar/picker";
+import BackLink from "@components/back-link";
 import Button from "@components/button";
 import { useCharacters } from "@context/character";
 import NotFoundPage from "@pages/not-found";
@@ -102,6 +103,7 @@ const CharacterForm: React.FC = () => {
 
   return (
     <section className="main-content new-character">
+      <BackLink href={AppRoute.Characters} label="Back to characters" />
       <h1 className="main-title new-character-title">{title}</h1>
       <form className="new-character-form" onSubmit={handleSubmit(onSubmit)}>
         <fieldset className="new-character-form-fieldset new-character-name">
@@ -115,6 +117,7 @@ const CharacterForm: React.FC = () => {
             className="input"
             id="name"
             placeholder="Type your character name here"
+            maxLength={30}
             {...register("name", {
               required: true,
               pattern: /^[a-zA-Z\s]+$/,

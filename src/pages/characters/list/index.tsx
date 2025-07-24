@@ -29,6 +29,39 @@ const CharactersPage: React.FC = () => {
     }
   };
 
+  const getPageContent = ({
+    content,
+    title,
+  }: {
+    content: React.ReactNode;
+    title?: string;
+  }) => {
+    return (
+      <section className="characters main-content">
+        {title && <h1 className="main-title">{title}</h1>}
+        {content}
+      </section>
+    );
+  };
+
+  if (isLoading) {
+    return getPageContent({
+      content: <CharactersSkeleton />,
+      title: "Your characters",
+    });
+  }
+
+  if (isLoadingError) {
+    return getPageContent({
+      content: (
+        <div className="characters-error">
+          <p>Error retrieving data from IndexedDB</p>
+          <p>Please refresh the page</p>
+        </div>
+      ),
+    });
+  }
+
   const getCharactersList = () => {
     if (characters.length > 0) {
       return <CharactersList openDialog={openModal} />;
@@ -49,30 +82,6 @@ const CharactersPage: React.FC = () => {
     );
   };
 
-  let content;
-  if (isLoading) {
-    content = (
-      <>
-        <h1 className="main-title">Your characters</h1>
-        <CharactersSkeleton />
-      </>
-    );
-  } else if (isLoadingError) {
-    content = (
-      <div className="characters-error">
-        <p>Error retrieving data from Local Storage</p>
-        <p>Please refresh the page</p>
-      </div>
-    );
-  } else {
-    content = (
-      <>
-        <h1 className="main-title">Your characters</h1>
-        {getCharactersList()}
-      </>
-    );
-  }
-
   return (
     <>
       <Modal dialogRef={dialogRef} ariaLabel="Delete character confirmation">
@@ -81,7 +90,10 @@ const CharactersPage: React.FC = () => {
           onDeleteClick={handleDelete}
         />
       </Modal>
-      <section className="characters main-content">{content}</section>
+      {getPageContent({
+        content: getCharactersList(),
+        title: "Your characters",
+      })}
     </>
   );
 };
