@@ -19,7 +19,7 @@ type CharacterProps = {
   children: ReactNode;
 };
 
-type CharacterContextType = {
+export type CharacterContextType = {
   addNewCharacter: (data: FormFields, avatar?: string) => Promise<void>;
   characters: Character[];
   deleteCharacter: (id: string) => Promise<void>;
