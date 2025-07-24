@@ -3,7 +3,7 @@ import { CORE_ABILITIES } from "@settings";
 
 import { Ability } from "types/character";
 
-type CoreAbilities = Record<string, Ability>;
+export type CoreAbilities = Record<string, Ability>;
 
 const getAbility = (ability: number | ""): Ability => {
   return {
