@@ -50,7 +50,7 @@ const CharacterDetailsPage: React.FC = () => {
         ))}
       </ul>
       <h3 className="character-title">Notes</h3>
-      <p className="character-notes">{character?.notes}</p>
+      <p className="character-notes">{character.notes}</p>
     </section>
   );
 };
