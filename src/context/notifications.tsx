@@ -37,7 +37,7 @@ export const NotificationsProvider = ({ children }: NotificationsProps) => {
 
   const removeNotification = useCallback((id: string) => {
     setNotifications((prev) =>
-      prev.filter((notification) => notification.id !== id)
+      prev.filter((notification) => notification.id !== id),
     );
   }, []);
 
@@ -63,7 +63,7 @@ export const NotificationsProvider = ({ children }: NotificationsProps) => {
 
   const closeNotification = useCallback((id: string): void => {
     setNotifications((prev) =>
-      prev.filter((notification) => notification.id !== id)
+      prev.filter((notification) => notification.id !== id),
     );
   }, []);
 
@@ -89,7 +89,7 @@ export const NotificationsProvider = ({ children }: NotificationsProps) => {
       removeNotification,
       closeNotification,
       setIsHovered,
-    ]
+    ],
   );
 
   return (
@@ -103,7 +103,7 @@ export const useNotifications = () => {
   const context = useContext(NotificationsContext);
   if (!context) {
     throw new Error(
-      "useNotifications was called without being inside a NotificationProvider"
+      "useNotifications was called without being inside a NotificationProvider",
     );
   }
   return context;
